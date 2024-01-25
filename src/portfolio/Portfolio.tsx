@@ -1,11 +1,7 @@
-import { Navbar } from './ui/components/Navbar';
+import { PortfolioRouter } from './routes/PortfolioRouter';
 
 export const Portfolio = () => {
     return (
-        // <header>
-        <>
-            <Navbar />
-        </>
-        // </header>
+        <PortfolioRouter />
     );
 };

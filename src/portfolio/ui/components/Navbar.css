@@ -6,13 +6,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    /* background-color: #ff55dd; */
+    background-color: var(--background-secondary-color);
     gap: 25px;
     font-family: "Alata", sans-serif;
     font-style: normal;
     position: sticky;
     top: 0;
-    /* z-index: 10; */
 }
 
 .navbar--left {
@@ -22,6 +21,14 @@
     gap: 15px;
     padding-left: 75px;
 }
+.navbar--left__home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+}
 
 .title {
     font-weight: 600;
@@ -29,9 +36,9 @@
 }
 
 
-
 .navbar--right {
     padding-right: 75px;
+    position: relative;
 }
 
 .button__toggle {
@@ -83,12 +90,13 @@
 @media (max-width: 800px) {
     .navbar--right{
         position: absolute;
-        z-index: -1;
+        top: 100%;
+        left: 0%;
+        z-index: 1;
         padding: 0;
         width: 100%;
-        top: 100%;
-        background-color: aliceblue;
-        /* width: 100%; */
+        background-color: var(--background-secondary-color);
+        /* height: 100%; */
     }
     .menu {
         list-style: none;
@@ -102,5 +110,21 @@
     .button__toggle {
         display: block;
         padding-right: 75px;
+    }
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        /* padding: 0 50px; */
+    }
+
+    .navbar--left {
+        padding-left: 0;
+        margin: 0 auto;
+    }
+    .button__toggle {
+        padding-right: 0;
+        margin: 0 auto;
     }
 }

@@ -3,10 +3,13 @@ import {AnimatePresence, motion} from 'framer-motion';
 
 import './Navbar.css';
 import { useState } from 'react';
+import { useDimensions } from '../../hooks/useDimensions';
+import { routes } from '../../routes/routes';
 
 export const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const {width} = useDimensions();
 
     const onIsOpen = () => {
         setIsOpen(!isOpen);
@@ -16,8 +19,10 @@ export const Navbar = () => {
         <nav className='navbar'>
             {/* logo */}
             <div className='navbar--left'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" d="m16 11l1.697 1.527c1.542 1.388 2.313 2.082 2.313 2.973c0 .89-.771 1.585-2.314 2.973L16 20M13.987 5l-1.994 7.5L10 20M8 4.83L6.304 6.356C4.76 7.745 3.99 8.44 3.99 9.33c0 .89.771 1.585 2.314 2.973L8 13.83"/></svg>
-                <span className='title' >Gunter</span>
+                <NavLink to={'/home'} className='navbar--left__home'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" d="m16 11l1.697 1.527c1.542 1.388 2.313 2.082 2.313 2.973c0 .89-.771 1.585-2.314 2.973L16 20M13.987 5l-1.994 7.5L10 20M8 4.83L6.304 6.356C4.76 7.745 3.99 8.44 3.99 9.33c0 .89.771 1.585 2.314 2.973L8 13.83"/></svg>
+                    <span className='title' >Gunter</span>
+                </NavLink>
             </div>
 
             {/* menu img */}
@@ -38,57 +43,30 @@ export const Navbar = () => {
                 </motion.div>
             </AnimatePresence>
 
-            <div className='navbar--right'>
+            <motion.div animate={ (!isOpen && (width<800)) ? {opacity: [1, 0], x: [0, -150] } : {opacity: 1, scale: 1}} transition={{duration: 0.25}} className='navbar--right'>
 
                 {/* menu content */}
-                <motion.ul animate={isOpen ? {opacity: 1, scale: 1} : {opacity: 0, scale: 0}} transition={{duration: 0.4}} className='menu'>
-                    <li className='menu__item'>
-                        <NavLink 
-                            className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
-                            to={'/'}
-                        >
-                            {
-                                ({isActive}) => (
-                                    <>
-                                        Home
-                                        {isActive ? <motion.div layoutId='indicator' transition={{type: 'spring'}} className='link__selected'></motion.div> : ''}
-                                    </>
-                                )
-                            }
-                        </NavLink>
-                    </li>
-                    <li className='menu__item'>
-                        <NavLink 
-                            className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
-                            to={'/about-me'}
-                        >
-                            {
-                                ({isActive}) => (
-                                    <>
-                                        About me
-                                        {isActive ? <motion.div layoutId='indicator' transition={{type: 'spring'}} className='link__selected'></motion.div> : ''}
-                                    </>
-                                )
-                            }
-                        </NavLink>
-                    </li>
-                    <li className='menu__item'>
-                        <NavLink 
-                            className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
-                            to={'/contact'}
-                        >
-                            {
-                                ({isActive}) => (
-                                    <>
-                                        Contact
-                                        {isActive ? <motion.div layoutId='indicator' transition={{type: 'spring'}} className='link__selected'></motion.div> : ''}
-                                    </>
-                                )
-                            }
-                        </NavLink>
-                    </li>
+                <motion.ul className='menu'>
+
+                    {routes.map((route, index) => (
+                        <motion.li key={route.name+index} whileHover={{scale: [1, 1.15]}} className='menu__item'>
+                            <NavLink 
+                                className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
+                                to={route.to}
+                            >
+                                {
+                                    ({isActive}) => (
+                                        <>
+                                            {route.name}
+                                            {isActive ? <motion.div layoutId='indicator' transition={{type: 'spring'}} className='link__selected'></motion.div> : ''}
+                                        </>
+                                    )
+                                }
+                            </NavLink>
+                        </motion.li>
+                    ))}
                 </motion.ul>
-            </div>
+            </motion.div>
         </nav>
     );
 };
