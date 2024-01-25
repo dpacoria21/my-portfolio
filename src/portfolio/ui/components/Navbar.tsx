@@ -50,7 +50,7 @@ export const Navbar = () => {
 
                     {routes.map((route, index) => (
                         <motion.li key={route.name+index} whileHover={{scale: [1, 1.15]}} className='menu__item'>
-                            <NavLink 
+                            <NavLink
                                 className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
                                 to={route.to}
                             >
