@@ -3,6 +3,14 @@
 /* Document
    ========================================================================== */
 
+:root {
+    --primary-color: #6cb4ee;
+    --secondary-color: #3d8fe6;
+    --text-color: #264882;
+    --background-color: #f0f7fe;
+    --backgound-card-color: #c4e2f9;
+}
+
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -22,6 +30,7 @@
   
   body {
     margin: 0;
+    background-color: var(--background-color);
   }
   
   /**

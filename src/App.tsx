@@ -1,10 +1,11 @@
-function App() {
+import { BrowserRouter } from 'react-router-dom';
+import { Portfolio } from './portfolio/Portfolio';
+
+export const App = () => {
 
     return (
-        <>
-            <h1>Mi portafolio</h1>
-        </>
+        <BrowserRouter>
+            <Portfolio />
+        </BrowserRouter>
     );
-}
-
-export default App;
+};
