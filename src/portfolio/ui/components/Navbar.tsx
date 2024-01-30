@@ -12,6 +12,7 @@ export const Navbar = () => {
     const {width} = useDimensions();
 
     const onIsOpen = () => {
+        console.log('Saludos');
         setIsOpen(!isOpen);
     };
 
@@ -53,6 +54,7 @@ export const Navbar = () => {
                             <NavLink
                                 className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
                                 to={route.to}
+                                onClick={onIsOpen}
                             >
                                 {
                                     ({isActive}) => (
