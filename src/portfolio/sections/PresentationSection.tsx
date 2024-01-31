@@ -1,7 +1,7 @@
 import {motion, Variants} from 'framer-motion';
 import { WordAnimation } from '../components/WordAnimation';
 
-import './PresentationInfo.css';
+import './PresentationSection.css';
 
 const logoVariant1 = {
     rotate: {
@@ -61,7 +61,7 @@ const containerRight: Variants = {
     }
 };
 
-export const PresentationInfo = () => {
+export const PresentationSection = () => {
 
 
 

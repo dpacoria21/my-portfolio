@@ -1,9 +1,11 @@
-import { PresentationInfo } from '../components/PresentationInfo';
+import { PresentationSection } from '../sections/PresentationSection';
+import { ProjectsSection } from '../sections/ProjectsSection';
 
 export const HomePage = () => {
     return (
         <main>
-            <PresentationInfo />
+            <PresentationSection />
+            <ProjectsSection />
         </main>
     );
 };
