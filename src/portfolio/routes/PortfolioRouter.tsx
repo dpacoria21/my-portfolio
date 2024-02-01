@@ -5,7 +5,11 @@ import { routes } from './routes';
 export const PortfolioRouter = () => {
     return (
         <>
-            <header>
+            <header style={{
+                position: 'sticky',
+                top: 0,
+                zIndex: 999
+            }}>
                 <Navbar />
             </header>
             <main>
