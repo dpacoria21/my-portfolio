@@ -30,7 +30,7 @@ const itemVariants: Variants = {
     on: i => ({
         transition: {
             delay: i * 0.1,
-            duration: 0.5
+            duration: 0.7
         },
         opacity: 1,
         // scale: 1
@@ -38,7 +38,7 @@ const itemVariants: Variants = {
     off: i => ({
         transition: {
             delay: i * 0.1,
-            duration: 0.5
+            duration: 0.7
         },
         opacity: 0,
         // scale: 0
