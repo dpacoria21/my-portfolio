@@ -69,8 +69,9 @@ export const PresentationSection = () => {
         <section className="container">
             <motion.article whileInView={'visible'} viewport={{once: true}} variants={containerLeft} className="container__left">
                 <p className='presentation__title'>Welcome to my portfolio!</p>
-                <WordAnimation show='Diego Pacori' velocity={500}/>
-                <WordAnimation show='Front-End and Mobile Developer' velocity={500}/>
+                <WordAnimation show='Diego Pacori' velocity={300}/>
+                <WordAnimation show='Front-End' velocity={300}/>
+                <WordAnimation show='Mobile Developer' velocity={300}/>
                 <p className='presentation__text'>
                 Good morning, my name is Diego, I am 21 years old and I am a Front-End developer with +2 years of experience in this world and with the excitement of continuing to improve and collaborate with other programmers to improve my skills. 
                 </p>

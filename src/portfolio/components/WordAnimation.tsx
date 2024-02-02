@@ -20,7 +20,7 @@ const cursorVariant = {
         }
     },
     finished: {
-        scale: 0,
+        // scale: 0,
     }
 };
 
@@ -47,7 +47,14 @@ export const WordAnimation = ({show = '', velocity = 1000}: Props) => {
             <p className='word'>
                 {word}
             </p>
-            <motion.div variants={cursorVariant} animate={(word.length!==show.length) ? 'animated' : 'finished'} className='word__cursor'></motion.div>
+            <motion.div 
+                variants={cursorVariant} 
+                animate={'animated'}
+                // animate={(word.length!==show.length) ? 'animated' : 'finished'} 
+                className='word__cursor'
+            >
+                    
+            </motion.div>
         </div>
     );
 };
