@@ -1,12 +1,13 @@
 .card {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     position: relative;
     /* width: 60%; */
     color: var(--text-color);
-    /* height: 500px; */
-    height: 20%;
+    height: 350px;
+    width: 850px;
+    /* height: 20%; */
     z-index: 99;
     overflow: hidden;
     border-radius: 10px;
@@ -17,7 +18,7 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
 }
 
 .card:hover {
-    scale: 1.05;
+    scale: 1.02;
     -webkit-box-shadow: 5px 5px 12px 2px rgba(0,0,0,0.68); 
     box-shadow: 5px 5px 12px 2px rgba(0,0,0,0.68);
 }
@@ -33,7 +34,7 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255, 0.9);
+    background: rgba(222,237,251, 0.7);
     left: 100%;
     width: 100%;
     height: 100%;
@@ -47,18 +48,20 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
 .card__right {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: 20px 50px;
 }
 
 .card__img {
-    flex-shrink: 2;
-    width: 300px;
+    flex-shrink: 1;
+    width: 400px;
     border-radius: 10px 0 0 10px;
 }
 
 .card__logos{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     max-width: 490px;
     gap: 10px;
@@ -72,7 +75,8 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
     gap: 5px;
     padding: 0 10px;
     /* justify-content: space-evenly; */
-    background-color: var(--background-secondary-color);
+    background-color: var(--background-fourth-color);
+    color: var(--text-secondary-color);
     border-radius: 20px 20px;
 }
 
@@ -120,9 +124,11 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 870px) {
     .card {
+        flex-direction: column;
         width: 75%;
+        height: fit-content;
     }
     .card__img {
         width: 100%;
@@ -132,6 +138,8 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
     }
     .card__right {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         padding: 20px 10px;
     }

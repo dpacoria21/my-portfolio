@@ -4,15 +4,16 @@
 .cards__container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 25px;
 }
 
 .cards__title {
     text-align: center;
     font-family: 'Outfit', sans-serif;
+    color: var(--text-color);
     margin-bottom: 80px;
     font-weight: 900;
 }
