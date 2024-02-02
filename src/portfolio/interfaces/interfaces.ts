@@ -3,6 +3,7 @@ import { ReactElement } from 'react';
 export interface Tech {
     logo: ReactElement<React.SVGProps<SVGSVGElement>>,
     name: string,
+    color: string,
 }
 
 export interface Technologies {
