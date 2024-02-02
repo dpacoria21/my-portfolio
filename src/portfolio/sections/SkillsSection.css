@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 1000px;
+    width: 85%;
     gap: 15px;
 }
 
@@ -46,6 +46,7 @@
 } */
 
 .skill__title {
+    text-align: center;
     color: var(--text-color);
     margin: 8px 0;
     font-family: 'Outfit', sans-serif;
