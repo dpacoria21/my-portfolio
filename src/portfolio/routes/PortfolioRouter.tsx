@@ -29,6 +29,7 @@ export const PortfolioRouter = () => {
                 fontFamily: '"Outfit", sans-serif',
                 padding: '20px 0',
                 color: 'var(--text-color)',
+                opacity: 0.75
             }}>
                 <p>&copy; 2024 Gunter. Todos los derechos reservados. | Diseñado por <a style={{textDecoration: 'none', color: 'var(--background-third-color)'}} href="https://github.com/dpacoria21" target="_blank" rel="noreferrer">Diego Pacori</a></p>
             </footer>
