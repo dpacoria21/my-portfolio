@@ -8,12 +8,12 @@ const listVariants: Variants = {
     off: {
         opacity: 0,
         scale: 0,
-        transition: {duration: 0.8, when: 'afterChildren'}
+        transition: {duration: 0.5, when: 'afterChildren'}
     },
     on: {
         opacity: 1,
         scale: 1,
-        transition: {duration: 0.8, when: 'beforeChildren'},
+        transition: {duration: 0.5, when: 'beforeChildren'},
     }
 };
 
@@ -22,13 +22,13 @@ const itemVariants: Variants = {
         opacity: 1, scale: 1,
         transition: {
             delay: i * 0.1,
-            duration: 0.7
+            duration: 0.5
         }
     }),
     off: i => ({
         transition: {
             delay: i * 0.1,
-            duration: 0.7
+            duration: 0.5
         },
         opacity: 0, scale: 0
     })
