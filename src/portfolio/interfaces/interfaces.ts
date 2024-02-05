@@ -18,3 +18,14 @@ export interface Project {
     links: string[],
     img: string,
 }
+
+export interface Experience {
+    title: string,
+    subtitle: string,
+    content: string,
+    date: string,
+    icon?: ReactElement<React.SVGProps<SVGSVGElement>>,
+    color?: string,
+    secondColor?: string,
+    link?: string,
+}

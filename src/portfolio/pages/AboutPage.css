@@ -1,0 +1,23 @@
+
+.vertical-timeline {
+    font-family: 'Outfit', sans-serif
+}
+
+.certificate__container {
+    display: flex;
+    justify-content: end;
+}
+.certificate {
+    display: inline-flex;
+    margin: 13px 10px 0 0;
+}
+
+/* .timeline__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+/* .timeline__icon svg{
+    width: 1.8rem;
+    height: 1.8rem;
+} */
