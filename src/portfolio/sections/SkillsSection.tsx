@@ -1,15 +1,11 @@
-import { CSSProperties, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Variants, motion} from 'framer-motion';
 
 import { technologies } from '../data/technologies';
-import { Tech } from '../interfaces/interfaces';
+import { CustomStyle, Tech } from '../interfaces/interfaces';
 
 
 import './SkillsSection.css';
-
-interface CustomStyle extends CSSProperties {
-    '--skill-hover-color': string,
-}
 
 const listVariants: Variants = {
     off: {

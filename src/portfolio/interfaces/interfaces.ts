@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { CSSProperties, ReactElement } from 'react';
 
 export interface Tech {
     logo: ReactElement<React.SVGProps<SVGSVGElement>>,
@@ -28,4 +28,14 @@ export interface Experience {
     color?: string,
     secondColor?: string,
     link?: string,
+}
+
+export interface Contact {
+    name: string,
+    path: string,
+    color: string,
+}
+
+export interface CustomStyle extends CSSProperties {
+    '--skill-hover-color': string,
 }
