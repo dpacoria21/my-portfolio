@@ -4,8 +4,14 @@ import 'react-vertical-timeline-component/style.min.css';
 import './AboutPage.css';
 import { experiences } from '../data/experiences';
 import {motion} from 'framer-motion';
+import { useEffect } from 'react';
 
 export const AboutPage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <section>
             {/* <p>Saludos bebita wax</p> */}

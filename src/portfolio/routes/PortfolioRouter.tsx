@@ -3,6 +3,7 @@ import { Navbar } from '../ui/components/Navbar';
 import { routes } from './routes';
 
 export const PortfolioRouter = () => {
+    
     return (
         <>
             <header style={{
@@ -20,6 +21,17 @@ export const PortfolioRouter = () => {
                     <Route path='/*' element={<Navigate to={'/home'}/>} />
                 </Routes>
             </main>
+            <footer style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                fontFamily: '"Outfit", sans-serif',
+                padding: '20px 0',
+                color: 'var(--text-color)',
+            }}>
+                <p>&copy; 2024 Gunter. Todos los derechos reservados. | Diseñado por <a style={{textDecoration: 'none', color: 'var(--background-third-color)'}} href="https://github.com/dpacoria21" target="_blank" rel="noreferrer">Diego Pacori</a></p>
+            </footer>
         </>
     );
 };

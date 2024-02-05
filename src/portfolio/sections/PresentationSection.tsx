@@ -63,8 +63,6 @@ const containerRight: Variants = {
 
 export const PresentationSection = () => {
 
-
-
     return (
         <section className="container">
             <motion.article whileInView={'visible'} viewport={{once: true}} variants={containerLeft} className="container__left">
