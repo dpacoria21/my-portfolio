@@ -90,7 +90,7 @@
     color: white;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 980px) {
     .navbar--right{
         position: absolute;
         top: 100%;

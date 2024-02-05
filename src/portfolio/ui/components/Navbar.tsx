@@ -12,7 +12,6 @@ export const Navbar = () => {
     const {width} = useDimensions();
 
     const onIsOpen = () => {
-        console.log('Saludos');
         setIsOpen(!isOpen);
     };
 
@@ -44,7 +43,7 @@ export const Navbar = () => {
                 </motion.div>
             </AnimatePresence>
 
-            <motion.div animate={ (!isOpen && (width<800)) ? {opacity: [1, 0], x: [0, -150] } : {opacity: 1, scale: 1}} transition={{duration: 0.25}} className='navbar--right'>
+            <motion.div animate={ (!isOpen && (width<980)) ? {opacity: [1, 0], x: [0, -150] } : {opacity: 1, scale: 1}} transition={{duration: 0.25}} className='navbar--right'>
 
                 {/* menu content */}
                 <motion.ul className='menu'>

@@ -13,7 +13,7 @@ export const contacts: Contact[] = [
     },
     {
         name: 'linkedin',
-        path: 'url',
+        path: 'https://www.linkedin.com/in/dpacoria21/',
         color: '#87c3f2',
     },
     {

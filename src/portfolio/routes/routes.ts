@@ -14,18 +14,18 @@ export const routes: Route[] = [
         to: '/home',
         path: 'home',
         component: HomePage,
-        name: 'Home'
+        name: '📖Presentación'
     },
     {
         to: '/about-me',
         path: 'about-me',
         component: AboutPage,
-        name: 'About me'
+        name: '🧑‍💻Sobre mí'
     },
     {
         to: '/contact',
         path: 'contact',
         component: ContactPage,
-        name: 'Contact'
+        name: '☎️Contacto'
     },
 ];

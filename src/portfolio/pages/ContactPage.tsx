@@ -49,6 +49,15 @@ export const ContactPage = () => {
                 <motion.a 
                     variants={itemVariants} 
                     custom={i}
+                    animate={{
+                        // x: [0, 25, 15, 0],
+                        y: [0, 15, 0],
+                        transition: {
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: 'linear',
+                        },
+                    }}
                     style={{
                         '--skill-hover-color': contact.color
                     } as CustomStyle}

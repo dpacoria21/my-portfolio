@@ -1,5 +1,5 @@
 .contact__container {
-    min-height: 765px;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,8 +21,8 @@
 .contact__img {
     /* width: 100%; */
     /* height: 100%; */
-    width: 300px;
-    height: 300px;
+    width: 230px;
+    height: 230px;
     object-fit: cover;
 }
 
