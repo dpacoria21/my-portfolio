@@ -60,7 +60,7 @@ export const SkillsSection = () => {
             viewport={{once: true}}
             className='skills'
         >
-            <h1 className='skills__title'>My Skills 🧑‍💻</h1>
+            <h1 className='skills__title'>Mis Habilidades 🧑‍💻</h1>
             <section className='skills__container'>
                 {skills.map((skill, i) => (
                     <motion.div

@@ -37,7 +37,7 @@ const itemVariants: Variants = {
 export const ProjectsSection = () => {
     return (
         <motion.section variants={listVariants} initial={'off'} animate={'on'} viewport={{once: true}} className='cards'>
-            <h1 className='cards__title'>My Projects 📂</h1>
+            <h1 className='cards__title'>Mis Proyectos 📂</h1>
             <motion.section className='cards__container'>
                 {
                     projects.map((project, i) => (
