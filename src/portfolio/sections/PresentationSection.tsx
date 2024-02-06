@@ -2,6 +2,7 @@ import {motion, Variants} from 'framer-motion';
 import { WordAnimation } from '../components/WordAnimation';
 
 import './PresentationSection.css';
+import { ButtonDownload } from '../components/ButtonDownload';
 
 const logoVariant1 = {
     rotate: {
@@ -66,13 +67,15 @@ export const PresentationSection = () => {
     return (
         <section className="container">
             <motion.article whileInView={'visible'} viewport={{once: true}} variants={containerLeft} className="container__left">
-                <p className='presentation__title'>Welcome to my portfolio!</p>
+                <p className='presentation__title'>Bienvenido a mi portafolio!</p>
                 <WordAnimation show='Diego Pacori' velocity={300}/>
-                <WordAnimation show='Front-End' velocity={300}/>
-                <WordAnimation show='Mobile Developer' velocity={300}/>
+                <WordAnimation show='Front-End y' velocity={300}/>
+                <WordAnimation show='Desarrollador Móvil' velocity={300}/>
                 <p className='presentation__text'>
-                Good morning, my name is Diego, I am 21 years old and I am a Front-End developer with +2 years of experience in this world and with the excitement of continuing to improve and collaborate with other programmers to improve my skills. 
+                    Buenas, tengo 21 años y soy estudiante de 7mo ciclo de la carrera de Ingeniería de Sistemas y tengo +2 años de experiencia en el desarrollo web.
+                    Todos me conocen como gunter y espero que trabajemos juntos en tu próximo proyecto, ya sea móvil o web.
                 </p>
+                <ButtonDownload />
             </motion.article>
             <motion.div whileInView={'visible'} viewport={{once: true}} variants={containerRight} className="container__right">
                 <img src={'/perfil.webp'} loading='lazy' className="perfil" alt="Perfil" />

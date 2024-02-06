@@ -27,7 +27,7 @@ export const AboutPage = () => {
                             contentStyle={{ background: 'var(--background-secondary-color)', color: 'var(--text-color)'}}
                             contentArrowStyle={{ borderRight: '7px solid  var(--background-secondary-color)' }}
                             date={date}
-                            iconStyle={{ 
+                            iconStyle={{
                                 background: color,
                                 color: '#000',
                                 boxShadow: `0 0 0 4px ${secondColor}, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05)`
@@ -64,6 +64,12 @@ export const AboutPage = () => {
                 />
                 
             </VerticalTimeline>
+            {/* <div style={{
+                display: 'flex',
+                justifyContent: 'center'
+            }}>
+                <ButtonDownload />
+            </div> */}
         </section>
     );
 };

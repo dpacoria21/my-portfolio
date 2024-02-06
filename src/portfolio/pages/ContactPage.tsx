@@ -43,35 +43,36 @@ export const ContactPage = () => {
     }, []);
 
     return (
-
-        <motion.section layout variants={listVariants} whileInView={'on'} initial={'off'} viewport={{once: true}} className='contact__container'>
-            {contacts.map((contact, i) => (
-                <motion.a 
-                    variants={itemVariants} 
-                    custom={i}
-                    animate={{
-                        // x: [0, 25, 15, 0],
-                        y: [0, 15, 0],
-                        transition: {
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: 'linear',
-                        },
-                    }}
-                    style={{
-                        '--skill-hover-color': contact.color
-                    } as CustomStyle}
-                    transition={{duration: 0.5}} 
-                    href={contact.path} 
-                    key={contact.name+i} 
-                    className='contact__item'
-                    rel={'noreferrer'}
-                    target='_blank'
-                >
-                    <img className='contact__img' src={`/${contact.name}.webp`} loading='lazy' alt={contact.name} />
-                </motion.a>
-            ))}
-        </motion.section>
+        <>
+            <motion.section layout variants={listVariants} whileInView={'on'} initial={'off'} viewport={{once: true}} className='contact__container'>
+                {contacts.map((contact, i) => (
+                    <motion.a 
+                        variants={itemVariants} 
+                        custom={i}
+                        animate={{
+                            // x: [0, 25, 15, 0],
+                            y: [0, 15, 0],
+                            transition: {
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: 'linear',
+                            },
+                        }}
+                        style={{
+                            '--skill-hover-color': contact.color
+                        } as CustomStyle}
+                        transition={{duration: 0.5}} 
+                        href={contact.path} 
+                        key={contact.name+i} 
+                        className='contact__item'
+                        rel={'noreferrer'}
+                        target='_blank'
+                    >
+                        <img className='contact__img' src={`/${contact.name}.webp`} loading='lazy' alt={contact.name} />
+                    </motion.a>
+                ))}
+            </motion.section>
+        </>
     );
 };
 

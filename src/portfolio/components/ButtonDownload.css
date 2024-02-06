@@ -1,0 +1,9 @@
+.button__download {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 18px;
+    background-color: var(--background-secondary-color);
+    padding: 10px 20px;
+    border-radius: 3px;
+}
