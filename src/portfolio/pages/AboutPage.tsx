@@ -67,3 +67,5 @@ export const AboutPage = () => {
         </section>
     );
 };
+
+export default AboutPage;

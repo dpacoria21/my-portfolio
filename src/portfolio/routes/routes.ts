@@ -1,31 +1,35 @@
-import { AboutPage, ContactPage, HomePage } from '../pages';
+import { LazyExoticComponent, lazy } from 'react';
 
 type JSXComponent = () => JSX.Element;
 
 interface Route {
     to: string,
     path: string,
-    component: JSXComponent,
+    component: LazyExoticComponent<JSXComponent> | JSXComponent,
     name: string,
 }
+
+const lazyHomePage = lazy(() => import('../pages/HomePage'));
+const lazyAboutPage = lazy(() => import('../pages/AboutPage'));
+const lazyContactPage = lazy(() => import('../pages/ContactPage'));
 
 export const routes: Route[] = [
     {
         to: '/home',
         path: 'home',
-        component: HomePage,
+        component: lazyHomePage,
         name: '📖Presentación'
     },
     {
         to: '/about-me',
         path: 'about-me',
-        component: AboutPage,
+        component: lazyAboutPage,
         name: '🧑‍💻Sobre mí'
     },
     {
         to: '/contact',
         path: 'contact',
-        component: ContactPage,
+        component: lazyContactPage,
         name: '☎️Contacto'
     },
 ];

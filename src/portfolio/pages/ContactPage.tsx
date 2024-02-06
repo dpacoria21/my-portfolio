@@ -68,9 +68,11 @@ export const ContactPage = () => {
                     rel={'noreferrer'}
                     target='_blank'
                 >
-                    <img className='contact__img' src={`/${contact.name}.webp`} alt={contact.name} />
+                    <img className='contact__img' src={`/${contact.name}.webp`} loading='lazy' alt={contact.name} />
                 </motion.a>
             ))}
         </motion.section>
     );
 };
+
+export default ContactPage;
