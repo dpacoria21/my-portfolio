@@ -15,8 +15,8 @@ const lazyContactPage = lazy(() => import('../pages/ContactPage'));
 
 export const routes: Route[] = [
     {
-        to: '/home',
-        path: 'home',
+        to: '/',
+        path: '',
         component: lazyHomePage,
         name: '📖Presentación'
     },
