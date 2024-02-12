@@ -1,13 +1,10 @@
 .card {
     display: flex;
     justify-content: center;
-    /* flex-wrap: wrap; */
     position: relative;
-    /* width: 60%; */
     color: var(--text-color);
     height: 350px;
     width: 850px;
-    /* height: 20%; */
     z-index: 99;
     overflow: hidden;
     border-radius: 10px;
@@ -65,7 +62,6 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
     flex-wrap: wrap;
     max-width: 490px;
     gap: 10px;
-    /* overflow-y: auto; */
 }
 
 .card__logo{
@@ -74,7 +70,6 @@ background: linear-gradient(313deg, rgba(108,180,238,1) 36%, rgba(196,226,249,1)
     justify-content: center;
     gap: 5px;
     padding: 0 10px;
-    /* justify-content: space-evenly; */
     background-color: var(--background-fourth-color);
     color: var(--text-secondary-color);
     border-radius: 20px 20px;

@@ -46,7 +46,6 @@ const containerLeft: Variants = {
         opacity: [0, 1],
         x: [-200, 0],
         transition: {
-            // type: 'spring',
             duration: 1,
         } 
     }
@@ -56,7 +55,6 @@ const containerRight: Variants = {
         opacity: [0, 1],
         x: [200, 0],
         transition: {
-            // type: 'spring',
             duration: 1
         }
     }

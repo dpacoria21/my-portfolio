@@ -25,9 +25,6 @@
     left: 101%;
     border-radius: 1px;
     background-color: var(--text-color);
-    /* padding-bottom: 10px; */
-    /* bottom: -3px; */
-    /* content: ''; */
 }
 
 @media (max-width: 400px) {

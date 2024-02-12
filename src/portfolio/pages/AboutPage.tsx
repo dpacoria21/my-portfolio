@@ -14,7 +14,6 @@ export const AboutPage = () => {
 
     return (
         <section>
-            {/* <p>Saludos bebita wax</p> */}
             <VerticalTimeline
                 className='vertical-timeline'
                 lineColor = {'var(--background-secondary-color)'}
@@ -64,12 +63,6 @@ export const AboutPage = () => {
                 />
                 
             </VerticalTimeline>
-            {/* <div style={{
-                display: 'flex',
-                justifyContent: 'center'
-            }}>
-                <ButtonDownload />
-            </div> */}
         </section>
     );
 };

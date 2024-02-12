@@ -11,13 +11,11 @@ const listVariants: Variants = {
     off: {
         opacity: 0,
         x: -50,
-        // scale: 0,
         transition: {duration: 0.5, when: 'afterChildren'}
     },
     on: {
         opacity: 1,
         x: 0,
-        // scale: 1,
         transition: {duration: 0.5, when: 'beforeChildren'},
     }
 };
@@ -29,7 +27,6 @@ const itemVariants: Variants = {
             duration: 0.5
         },
         opacity: 1,
-        // scale: 1
     }),
     off: i => ({
         transition: {
@@ -37,7 +34,6 @@ const itemVariants: Variants = {
             duration: 0.5
         },
         opacity: 0,
-        // scale: 0
     })
 };
 
@@ -53,10 +49,7 @@ export const SkillsSection = () => {
         <motion.section 
             variants={listVariants}
             whileInView={'on'} 
-            // initial={{opacity: 0, scale: 0, x: 400}}
             initial={'off'}
-            // animate={'on'}
-            // transition={{duration: 0.8, ease: 'circInOut'}}
             viewport={{once: true}}
             className='skills'
         >

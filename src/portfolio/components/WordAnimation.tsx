@@ -11,8 +11,6 @@ interface Props {
 const cursorVariant = {
     animated: {
         scale: [0, 1, 0],
-        // hight: ['0%', '100%', '0%'],
-        // transformOrigin: 'center',
         transition: {
             duration: 1.20,
             ease: 'linear',
@@ -20,7 +18,6 @@ const cursorVariant = {
         }
     },
     finished: {
-        // scale: 0,
     }
 };
 
@@ -50,7 +47,6 @@ export const WordAnimation = ({show = '', velocity = 1000}: Props) => {
             <motion.div 
                 variants={cursorVariant} 
                 animate={'animated'}
-                // animate={(word.length!==show.length) ? 'animated' : 'finished'} 
                 className='word__cursor'
             >
                     
