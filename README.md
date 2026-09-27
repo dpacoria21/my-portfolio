@@ -1,30 +1,45 @@
-# React + TypeScript + Vite
+# Portafolio de Diego Ivan Pacori Anccasi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio personal para presentar proyectos de desarrollo web y móvil, trayectoria y habilidades.
 
-Currently, two official plugins are available:
+**[Ver portafolio](https://my-portfolio-olive-eight-62.vercel.app/)** · **[LinkedIn](https://www.linkedin.com/in/diego-ivan-pacori-anccasi-9860172b3/)** · **[GitHub](https://github.com/dpacoria21)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologías
 
-## Expanding the ESLint configuration
+React 18, TypeScript, Vite, React Router, Framer Motion y CSS.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Estructura
 
-- Configure the top-level `parserOptions` property like this:
+- `src/portfolio/pages/`: presentación, trayectoria y contacto.
+- `src/portfolio/sections/`: presentación, proyectos y habilidades.
+- `src/portfolio/data/`: datos de proyectos, experiencias, tecnologías y contacto.
+- `src/portfolio/components/`: componentes de interfaz.
+- `src/portfolio/routes/`: rutas de navegación.
+- `public/`: recursos estáticos.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Desarrollo local
+
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Validación y compilación
+
+```bash
+npm run lint
+npm run build
+npm run preview
+```
+
+`build` ejecuta TypeScript y genera la versión de producción en `dist/`.
+
+## Proyectos presentados
+
+Scheduler-App, ChapiFarm, Pichanga-Shirt-Store y aplicaciones de práctica de frontend. La información de cada proyecto y sus enlaces se mantienen en `src/portfolio/data/projects.tsx`.
+
+## Autor
+
+**Diego Ivan Pacori Anccasi** · Full-Stack Developer · Ingeniería de Sistemas, UNSA.
+
+[Perfil profesional y logros de programación competitiva](https://github.com/dpacoria21)
