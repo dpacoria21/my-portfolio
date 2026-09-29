@@ -27,8 +27,8 @@ export const ProjectCard = ({title, about, tools, links, img}: Props) => {
                 </div>
                 <h2 className='card__title'>Technologies</h2>
                 <section className='card__logos'>
-                    {tools.map((tool, i) => (
-                        <div key={tool+i} className='card__logo'>
+                    {tools.map((tool) => (
+                        <div key={tool} className='card__logo'>
                             {technologies[tool].logo}
                             <span className='logo__info'>{technologies[tool+''].name}</span>
                         </div>

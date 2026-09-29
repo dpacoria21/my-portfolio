@@ -45,8 +45,8 @@ export const Navbar = () => {
 
                 <motion.ul className='menu'>
 
-                    {routes.map((route, index) => (
-                        <motion.li key={route.name+index} whileHover={{scale: [1, 1.15]}} className='menu__item'>
+                    {routes.map((route) => (
+                        <motion.li key={route.to} whileHover={{scale: [1, 1.15]}} className='menu__item'>
                             <NavLink
                                 className={({isActive}) => isActive ? 'menu__item__link text__selected': 'menu__item__link'} 
                                 to={route.to}

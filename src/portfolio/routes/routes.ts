@@ -1,4 +1,4 @@
-import { LazyExoticComponent, lazy } from 'react';
+import { type JSX, LazyExoticComponent, lazy } from 'react';
 
 type JSXComponent = () => JSX.Element;
 

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import './WordAnimation.css';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 interface Props {
     show: string,
     velocity: number,
 }
 
-const cursorVariant = {
+const cursorVariant: Variants = {
     animated: {
         scale: [0, 1, 0],
         transition: {
@@ -21,29 +21,29 @@ const cursorVariant = {
     }
 };
 
-export const WordAnimation = ({show = '', velocity = 1000}: Props) => {
-
+const AnimatedWord = ({ show, velocity }: Props) => {
     const [word, setWord] = useState<string>('');
 
     useEffect(() => {
-
-        let index: number = 0;
+        if (!show) return;
+        let index = 0;
         const showWord = setInterval(() => {
-            if(word.length!==show.length) {
-                setWord(show.substring(0, index));
-                index++;
-            }else {
+            index++;
+            setWord(show.substring(0, index));
+            if (index >= show.length) {
                 clearInterval(showWord);
             }
         }, velocity);
+        return () => clearInterval(showWord);
+    }, [show, velocity]);
 
-    }, []);
+    return <p className='word'>{word}</p>;
+};
 
+export const WordAnimation = ({show = '', velocity = 1000}: Props) => {
     return (
         <div className='word__container'>
-            <p className='word'>
-                {word}
-            </p>
+            <AnimatedWord key={`${show}:${velocity}`} show={show} velocity={velocity} />
             <motion.div 
                 variants={cursorVariant} 
                 animate={'animated'}

@@ -20,7 +20,9 @@ Preferencia del autor: diseño minimalista, con negro, azul oscuro y azul claro.
 
 ## Tecnologías
 
-React 18, TypeScript, Vite, React Router, Framer Motion y CSS.
+React 19.3, TypeScript 6.0, Vite 8.3, React Router 7.18, Framer Motion 13.4 y CSS. Entorno: Node.js 24.x; validación con ESLint 10, `@eslint-react/eslint-plugin` 5.22 y `typescript-eslint` 8.
+
+TypeScript 6.0 es la versión más reciente compatible con la API que utiliza `typescript-eslint` 8 en esta actualización. Las próximas versiones mayores se incorporarán cuando sus plugins las admitan, sin forzar dependencias incompatibles. `package-lock.json` registra las versiones exactas instaladas.
 
 ## Contenido y fuentes
 
@@ -53,8 +55,11 @@ La página principal vive en `/`, con enlaces directos a `#proyectos`, `#sobre-m
 
 ## Desarrollo local
 
+Usa **Node.js 24.x**; el entorno local de esta actualización utiliza **24.16**. Comprueba la versión e instala las dependencias del archivo de bloqueo:
+
 ```bash
-npm install
+node --version
+npm ci
 npm run dev
 ```
 
@@ -69,6 +74,10 @@ npm run preview
 `build` ejecuta TypeScript y genera la versión de producción en `dist/`. `preview` permite revisar esa compilación localmente.
 
 Al cambiar la interfaz, revisa temas claro/oscuro, tamaños móvil/escritorio, navegación por teclado, búsqueda, filtros, fichas de proyectos y enlaces a los documentos.
+
+## Despliegue en Vercel
+
+El proyecto compila con `npm run build` y publica la carpeta `dist/`. `package.json` fija `engines.node` en `24.x`: esta configuración tiene prioridad sobre la versión seleccionada en el panel de Vercel. Vercel aplica las actualizaciones menores y de parche de esa versión mayor automáticamente. Consulta la [documentación oficial de versiones de Node.js](https://vercel.com/docs/functions/runtimes/node-js/node-js-versions).
 
 ## Autor
 

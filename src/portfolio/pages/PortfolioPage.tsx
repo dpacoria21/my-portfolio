@@ -147,8 +147,8 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
                         [179, 59],
                         [165, 163],
                         [130, 189]
-                    ].map(([cx, cy], i) => (
-                        <circle key={i} cx={cx} cy={cy} r="4" />
+                    ].map(([cx, cy]) => (
+                        <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" />
                     ))}
                 </svg>
                 <span className="vision-caption">La interfaz eres tú.</span>
@@ -276,8 +276,9 @@ const PortfolioPage = () => {
     const [filter, setFilter] = useState('Todos');
     const [selected, setSelected] = useState<SelectedProject | null>(null);
     const [copyStatus, setCopyStatus] = useState('');
-    const copyTimer = useRef<ReturnType<typeof setTimeout>>();
-    const menuToggle = useRef<HTMLButtonElement>(null);
+    const copyTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+    const menuToggleRef = useRef<HTMLButtonElement>(null);
+    const [year] = useState(() => new Date().getFullYear());
     const location = useLocation();
     const reduced = useReducedMotion();
     const { scrollYProgress } = useScroll();
@@ -324,7 +325,7 @@ const PortfolioPage = () => {
             }
             if (event.key === 'Escape') {
                 setMenuOpen(false);
-                if (menuOpen) menuToggle.current?.focus();
+                if (menuOpen) menuToggleRef.current?.focus();
             }
         };
         window.addEventListener('keydown', onKey);
@@ -361,7 +362,7 @@ const PortfolioPage = () => {
         return () => cancelAnimationFrame(frame);
     }, [location.hash]);
 
-    useEffect(() => () => clearTimeout(copyTimer.current), []);
+    useEffect(() => () => clearTimeout(copyTimerRef.current), []);
 
     const copyEmail = async () => {
         try {
@@ -372,8 +373,8 @@ const PortfolioPage = () => {
                 'Puedes seleccionar y copiar el correo que aparece aquí.'
             );
         }
-        clearTimeout(copyTimer.current);
-        copyTimer.current = setTimeout(() => setCopyStatus(''), 4000);
+        clearTimeout(copyTimerRef.current);
+        copyTimerRef.current = setTimeout(() => setCopyStatus(''), 4000);
     };
 
     const commandItems = [
@@ -485,7 +486,7 @@ const PortfolioPage = () => {
                             <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
                         </button>
                         <button
-                            ref={menuToggle}
+                            ref={menuToggleRef}
                             className="icon-button menu-toggle"
                             aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
                             aria-expanded={menuOpen}
@@ -1008,7 +1009,7 @@ const PortfolioPage = () => {
                 <p>
                     Hecho con intención, por Diego Pacori.
                     <br />
-                    <span>© {new Date().getFullYear()}</span>
+                    <span>© {year}</span>
                 </p>
                 <div>
                     <a href={profile.github} target="_blank" rel="noreferrer">

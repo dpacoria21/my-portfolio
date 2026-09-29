@@ -41,7 +41,7 @@ export const ProjectsSection = () => {
             <motion.section className='cards__container'>
                 {
                     projects.map((project, i) => (
-                        <motion.div variants={itemVariants} custom={i} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} key={project.title+i}>
+                        <motion.div variants={itemVariants} custom={i} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} key={project.title}>
                             <ProjectCard
                                 title={project.title}
                                 img={project.img}

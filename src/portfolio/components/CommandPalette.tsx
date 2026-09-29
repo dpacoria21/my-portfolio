@@ -53,8 +53,6 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
             if (dialog.open) dialog.close();
             return;
         }
-        setQuery('');
-        setActiveIndex(0);
         if (!dialog.open) dialog.showModal();
         inputRef.current?.focus();
         const previousOverflow = document.body.style.overflow;
@@ -100,7 +98,11 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
             className='command-dialog'
             aria-labelledby={`${id}-title`}
             onClick={handleBackdrop}
-            onClose={() => { if (open) onClose(); }}
+            onClose={() => {
+                setQuery('');
+                setActiveIndex(0);
+                if (open) onClose();
+            }}
         >
             <header className='command-header'>
                 <h2 id={`${id}-title`}>Explora el portafolio</h2>

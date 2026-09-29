@@ -19,9 +19,9 @@ export const AboutPage = () => {
                 lineColor = {'var(--background-secondary-color)'}
             >
                 {
-                    experiences.map(({title, icon, subtitle = '', content, date, color = 'var(--background-primary-color)', link = '', secondColor = 'var(--background-secondary-color)'}, i) => (
+                    experiences.map(({title, icon, subtitle = '', content, date, color = 'var(--background-primary-color)', link = '', secondColor = 'var(--background-secondary-color)'}) => (
                         <VerticalTimelineElement
-                            key={title+i}
+                            key={`${title}-${date}`}
                             className="vertical-timeline-element--education"
                             contentStyle={{ background: 'var(--background-secondary-color)', color: 'var(--text-color)'}}
                             contentArrowStyle={{ borderRight: '7px solid  var(--background-secondary-color)' }}

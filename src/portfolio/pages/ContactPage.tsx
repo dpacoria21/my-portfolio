@@ -63,7 +63,7 @@ export const ContactPage = () => {
                         } as CustomStyle}
                         transition={{duration: 0.5}} 
                         href={contact.path} 
-                        key={contact.name+i} 
+                        key={contact.name}
                         className='contact__item'
                         rel={'noreferrer'}
                         target='_blank'

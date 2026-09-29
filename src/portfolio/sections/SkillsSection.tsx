@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
 import {Variants, motion} from 'framer-motion';
 
 import { technologies } from '../data/technologies';
-import { CustomStyle, Tech } from '../interfaces/interfaces';
+import { CustomStyle } from '../interfaces/interfaces';
 
 
 import './SkillsSection.css';
+
+const skills = Object.entries(technologies);
 
 const listVariants: Variants = {
     off: {
@@ -38,12 +39,6 @@ const itemVariants: Variants = {
 };
 
 export const SkillsSection = () => {
-
-    const [skills, setSkills] = useState<Tech[]>([]);
-
-    useEffect(() => {
-        setSkills(Object.values(technologies));
-    }, []);
     
     return (
         <motion.section 
@@ -55,7 +50,7 @@ export const SkillsSection = () => {
         >
             <h1 className='skills__title'>Mis Habilidades 🧑‍💻</h1>
             <section className='skills__container'>
-                {skills.map((skill, i) => (
+                {skills.map(([technology, skill], i) => (
                     <motion.div
                         variants={itemVariants}
                         custom={i} 
@@ -63,7 +58,7 @@ export const SkillsSection = () => {
                             '--skill-hover-color': skill.color
                         } as CustomStyle}
                         className='skill' 
-                        key={skill.name+i}
+                        key={technology}
                     >
                         {skill.logo}
                         <p className='skill__title'>{skill.name}</p>

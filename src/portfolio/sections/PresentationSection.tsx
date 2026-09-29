@@ -1,10 +1,10 @@
-import {motion, Variants} from 'framer-motion';
+import {motion, type Variants} from 'framer-motion';
 import { WordAnimation } from '../components/WordAnimation';
 
 import './PresentationSection.css';
 import { ButtonDownload } from '../components/ButtonDownload';
 
-const logoVariant1 = {
+const logoVariant1: Variants = {
     rotate: {
         rotate: [0, 360],
         x: [0, 50, 20, 0],
@@ -16,7 +16,7 @@ const logoVariant1 = {
         },
     }
 };
-const logoVariant2 = {
+const logoVariant2: Variants = {
     rotate: {
         rotate: [0, 360],
         x: [0, 10, 50, 0],
@@ -28,7 +28,7 @@ const logoVariant2 = {
         },
     }
 };
-const logoVariant3 = {
+const logoVariant3: Variants = {
     rotate: {
         rotate: [0, 360],
         x: [0, 35, 60, 0],
