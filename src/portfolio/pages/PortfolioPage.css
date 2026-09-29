@@ -249,7 +249,7 @@ h2 { font: 500 clamp(32px, 3.3vw, 46px)/1.16 var(--display); letter-spacing: -.0
 .project-dialog[open]::backdrop { animation: modal-backdrop-enter .3s ease both; }
 .project-dialog[data-closing='true']::backdrop { animation: modal-backdrop-exit .22s ease both; }
 @keyframes modal-backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
-@keyframes modal-backdrop-exit { from { opacity: 1; } to { opacity: 0; } }
+@keyframes modal-backdrop-exit { from { opacity: var(--modal-backdrop-opacity, 1); } to { opacity: 0; } }
 .project-dialog-content { padding: 44px; position: relative; }
 .dialog-close { position: absolute; top: 15px; right: 15px; }
 .project-dialog-content > .eyebrow { display: block; color: var(--accent); margin-bottom: 23px; padding-right: 25px; }

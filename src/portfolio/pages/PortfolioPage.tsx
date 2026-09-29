@@ -177,6 +177,9 @@ const ProjectDialog = ({
         const dialog = ref.current;
         if (!dialog?.open || closingRef.current) return;
         closingRef.current = true;
+        const computed = getComputedStyle(dialog);
+        const currentAppearance = { opacity: computed.opacity, transform: computed.transform };
+        dialog.style.setProperty('--modal-backdrop-opacity', getComputedStyle(dialog, '::backdrop').opacity);
         animationRef.current?.cancel();
         if (reduced) {
             dialog.close();
@@ -184,7 +187,7 @@ const ProjectDialog = ({
         }
         dialog.dataset.closing = 'true';
         const animation = dialog.animate(
-            [{ opacity: 1, transform: 'translateY(0) scale(1)' }, { opacity: 0, transform: 'translateY(12px) scale(.985)' }],
+            [currentAppearance, { opacity: 0, transform: 'translateY(12px) scale(.985)' }],
             { duration: 220, easing: 'cubic-bezier(.4, 0, 1, 1)', fill: 'forwards' }
         );
         animationRef.current = animation;
@@ -203,6 +206,7 @@ const ProjectDialog = ({
         }
         closingRef.current = false;
         delete dialog.dataset.closing;
+        dialog.style.removeProperty('--modal-backdrop-opacity');
         if (!dialog.open) dialog.showModal();
         if (!reduced) {
             animationRef.current = dialog.animate(
