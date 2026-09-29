@@ -1,19 +1,20 @@
 import { Contact } from '../interfaces/interfaces';
+import { profile } from './profile';
 
 export const contacts: Contact[] = [
     {
         name: 'gmail',
-        path: 'https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSDbgvKTbVHHwlxgwWkdpgfMmFxrWKPpJNKzNVBqCNzxvJtXLNpfDDNxqrSDhJblcWkxkxvh',
+        path: `mailto:${profile.email}`,
         color: '#db1f45',
     },
     {
         name: 'whatsapp',
-        path: 'https://wa.link/t4gin6',
+        path: profile.whatsapp,
         color: '#1fdb3e',
     },
     {
         name: 'linkedin',
-        path: 'https://www.linkedin.com/in/dpacoria21/',
+        path: profile.linkedin,
         color: '#87c3f2',
     },
     {
