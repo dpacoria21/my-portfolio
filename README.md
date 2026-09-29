@@ -4,6 +4,10 @@ Portafolio personal de un Full-Stack Developer de Arequipa, Perú. Presenta proy
 
 **[Ver portafolio](https://my-portfolio-olive-eight-62.vercel.app/)** · **[LinkedIn](https://www.linkedin.com/in/diego-ivan-pacori-anccasi-9860172b3/)** · **[GitHub](https://github.com/dpacoria21)**
 
+## Dirección visual
+
+Preferencia del autor: diseño minimalista, con negro, azul oscuro y azul claro. Usar tipografía limpia, espacio libre y movimiento discreto. Mantener esta paleta en futuras actualizaciones.
+
 ## Experiencia del portafolio
 
 - Diseño adaptable a móvil y escritorio, con temas claro y oscuro. La preferencia se conserva en el navegador.

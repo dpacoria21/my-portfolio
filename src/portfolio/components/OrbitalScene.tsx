@@ -41,8 +41,8 @@ export const OrbitalScene = () => {
 
         cancelAnimationFrame(frameRef.current);
         frameRef.current = requestAnimationFrame(() => {
-            sceneRef.current?.style.setProperty('--orbit-x', `${-y * 12}deg`);
-            sceneRef.current?.style.setProperty('--orbit-y', `${x * 16}deg`);
+            sceneRef.current?.style.setProperty('--orbit-x', `${-y * 8}deg`);
+            sceneRef.current?.style.setProperty('--orbit-y', `${x * 10}deg`);
         });
     };
 
@@ -61,92 +61,31 @@ export const OrbitalScene = () => {
             onPointerLeave={handlePointerLeave}
         >
             <div className='orbital-scene__stage'>
-                <svg className='orbital-scene__drawing' viewBox='0 0 560 480' fill='none'>
+                <svg className='orbital-scene__drawing' viewBox='0 0 400 360' fill='none'>
                     <defs>
-                        <radialGradient id={`${sceneId}-atmosphere`}>
-                            <stop stopColor='#d5f279' stopOpacity='.14' />
-                            <stop offset='.48' stopColor='#a1c74c' stopOpacity='.06' />
-                            <stop offset='1' stopColor='#d5f279' stopOpacity='0' />
-                        </radialGradient>
-                        <radialGradient id={`${sceneId}-core`} cx='.34' cy='.3' r='.8'>
-                            <stop stopColor='#dceab3' stopOpacity='.25' />
-                            <stop offset='.42' stopColor='#a1ba62' stopOpacity='.08' />
-                            <stop offset='1' stopColor='#151b14' stopOpacity='.8' />
-                        </radialGradient>
-                        <linearGradient id={`${sceneId}-wire`} x1='170' y1='110' x2='390' y2='350' gradientUnits='userSpaceOnUse'>
-                            <stop stopColor='#f0f7d9' stopOpacity='.85' />
-                            <stop offset='.5' stopColor='#d5f279' stopOpacity='.48' />
-                            <stop offset='1' stopColor='#7c9857' stopOpacity='.16' />
-                        </linearGradient>
-                        <linearGradient id={`${sceneId}-ring`} x1='70' y1='100' x2='455' y2='360' gradientUnits='userSpaceOnUse'>
-                            <stop stopColor='#d5f279' stopOpacity='.12' />
-                            <stop offset='.48' stopColor='#d5f279' stopOpacity='.8' />
-                            <stop offset='1' stopColor='#ecf4d7' stopOpacity='.22' />
+                        <linearGradient id={`${sceneId}-wire`} x1='105' y1='80' x2='310' y2='285' gradientUnits='userSpaceOnUse'>
+                            <stop stopColor='#81b7ef' stopOpacity='.75' />
+                            <stop offset='.55' stopColor='#81b7ef' stopOpacity='.35' />
+                            <stop offset='1' stopColor='#42648a' stopOpacity='.2' />
                         </linearGradient>
                     </defs>
 
-                    <ellipse cx='280' cy='238' rx='258' ry='226' fill={`url(#${sceneId}-atmosphere)`} />
+                    <ellipse cx='200' cy='180' rx='156' ry='69' transform='rotate(55 200 180)' stroke='#81b7ef' strokeWidth='.6' opacity='.17' />
 
-                    <g className='orbital-scene__guides' stroke='#d9e5c7' strokeWidth='.6'>
-                        <circle cx='280' cy='238' r='201' strokeDasharray='2 9' opacity='.2' />
-                        <path d='M280 23v26M267 36h26M280 427v26M267 440h26M65 238h26M78 225v26M469 238h26M482 225v26' opacity='.25' />
-                        <path d='M116 75h-8v8M444 75h8v8M116 401h-8v-8M444 401h8v-8' opacity='.35' />
-                    </g>
-
-                    <g className='orbital-scene__outer-orbits' stroke={`url(#${sceneId}-ring)`}>
-                        <ellipse cx='280' cy='238' rx='216' ry='79' transform='rotate(-29 280 238)' strokeWidth='1.3' />
-                        <ellipse cx='280' cy='238' rx='210' ry='71' transform='rotate(-29 280 238)' strokeWidth='.5' opacity='.55' />
-                        <ellipse cx='280' cy='238' rx='191' ry='73' transform='rotate(55 280 238)' strokeWidth='.9' />
-                        <ellipse cx='280' cy='238' rx='176' ry='103' transform='rotate(109 280 238)' strokeWidth='.6' opacity='.5' />
+                    <g transform='rotate(-23 200 180)' stroke={`url(#${sceneId}-wire)`} strokeWidth='.65'>
+                        <circle cx='200' cy='180' r='108' />
+                        <ellipse cx='200' cy='180' rx='35' ry='108' />
+                        <ellipse cx='200' cy='180' rx='69' ry='108' />
+                        <ellipse cx='200' cy='180' rx='96' ry='108' />
+                        <ellipse cx='200' cy='180' rx='108' ry='31' />
+                        <ellipse cx='200' cy='180' rx='108' ry='66' />
+                        <ellipse cx='200' cy='180' rx='108' ry='94' />
+                        <path d='M200 72v216M92 180h216' />
                     </g>
 
-                    <g className='orbital-scene__globe' transform='rotate(-24 280 238)'>
-                        <circle cx='280' cy='238' r='117' fill={`url(#${sceneId}-core)`} />
-                        <g stroke={`url(#${sceneId}-wire)`} strokeWidth='.75'>
-                            <circle cx='280' cy='238' r='117' />
-                            <ellipse cx='280' cy='238' rx='29' ry='117' />
-                            <ellipse cx='280' cy='238' rx='59' ry='117' />
-                            <ellipse cx='280' cy='238' rx='87' ry='117' />
-                            <ellipse cx='280' cy='238' rx='108' ry='117' />
-                            <ellipse cx='280' cy='238' rx='117' ry='25' />
-                            <ellipse cx='280' cy='238' rx='117' ry='58' />
-                            <ellipse cx='280' cy='238' rx='117' ry='91' />
-                            <path d='M280 121v234M163 238h234' />
-                        </g>
-                        <path d='M168 203a117 117 0 0 1 123-81' stroke='#eef7d4' strokeWidth='1.7' strokeLinecap='round' opacity='.8' />
-                    </g>
-
-                    <g transform='rotate(-29 280 238)'>
-                        <path d='M64 238a216 79 0 0 0 432 0' stroke={`url(#${sceneId}-ring)`} strokeWidth='1.3' />
-                        <circle cx='464' cy='280' r='4.5' fill='#d5f279' />
-                        <circle cx='464' cy='280' r='9' stroke='#d5f279' strokeOpacity='.22' />
-                    </g>
-
-                    <g className='orbital-scene__satellite'>
-                        <circle cx='280' cy='55' r='4' fill='#e9f5c8' />
-                        <circle cx='280' cy='55' r='10' stroke='#d5f279' strokeOpacity='.18' />
-                    </g>
-                    <g className='orbital-scene__satellite orbital-scene__satellite--slow'>
-                        <circle cx='280' cy='413' r='2.5' fill='#d5f279' />
-                    </g>
-
-                    <g className='orbital-scene__label orbital-scene__label--react'>
-                        <path d='M392 101h-27l-25 28' stroke='#d5f279' strokeOpacity='.35' strokeWidth='.75' />
-                        <rect x='391' y='85' width='90' height='32' rx='16' />
-                        <circle cx='408' cy='101' r='3' fill='#d5f279' />
-                        <text x='420' y='105'>React</text>
-                    </g>
-                    <g className='orbital-scene__label orbital-scene__label--typescript'>
-                        <path d='M154 359h24l25-32' stroke='#d5f279' strokeOpacity='.35' strokeWidth='.75' />
-                        <rect x='43' y='343' width='113' height='32' rx='16' />
-                        <circle cx='60' cy='359' r='3' fill='#d5f279' />
-                        <text x='72' y='363'>TypeScript</text>
-                    </g>
-                    <g className='orbital-scene__label orbital-scene__label--node'>
-                        <path d='M423 318h-24l-18-17' stroke='#d5f279' strokeOpacity='.35' strokeWidth='.75' />
-                        <rect x='422' y='302' width='95' height='32' rx='16' />
-                        <circle cx='439' cy='318' r='3' fill='#d5f279' />
-                        <text x='451' y='322'>Node.js</text>
+                    <g transform='rotate(-27 200 180)'>
+                        <ellipse cx='200' cy='180' rx='176' ry='65' stroke='#81b7ef' strokeWidth='.7' opacity='.4' />
+                        <circle className='orbital-scene__satellite' r='2.4' fill='#81b7ef' />
                     </g>
                 </svg>
             </div>

@@ -32,10 +32,10 @@ const Reveal = ({
     return (
         <motion.div
             className={className}
-            initial={reduced ? false : { opacity: 0, y: 20 }}
+            initial={reduced ? false : { opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.08 }}
-            transition={{ duration: 0.55 }}
+            transition={{ duration: 0.4 }}
         >
             {children}
         </motion.div>
@@ -49,10 +49,6 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
     >
         <div className="visual-topline">
             <span>{project.category}</span>
-            <span>
-                DP /{' '}
-                {String(selectedProjects.indexOf(project) + 1).padStart(2, '0')}
-            </span>
         </div>
         {project.id === 'senses' && (
             <div className="senses-art">
@@ -156,7 +152,6 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
                     ))}
                 </svg>
                 <span className="vision-caption">La interfaz eres tú.</span>
-                <span className="vision-coordinate">X: 0.42 · Y: 0.68</span>
             </div>
         )}
         <span className="project-visual-arrow">
@@ -448,7 +443,7 @@ const PortfolioPage = () => {
                         id="main-navigation"
                         aria-label="Navegación principal"
                     >
-                        {navigation.map((item, index) => (
+                        {navigation.map((item) => (
                             <a
                                 key={item.id}
                                 href={`#${item.id}`}
@@ -462,7 +457,6 @@ const PortfolioPage = () => {
                                 }
                                 onClick={() => setMenuOpen(false)}
                             >
-                                <span>0{index + 1}</span>
                                 {item.label}
                             </a>
                         ))}
@@ -523,8 +517,7 @@ const PortfolioPage = () => {
                     <div className="hero-grid">
                         <div className="hero-copy">
                             <p className="hero-intro">
-                                Hola, soy {profile.shortName}{' '}
-                                <span className="tiny-spark">✳</span>
+                                Hola, soy {profile.shortName}.
                             </p>
                             <h1 id="hero-title">
                                 Ideas que
@@ -576,15 +569,7 @@ const PortfolioPage = () => {
                             </div>
                         </div>
                         <div className="hero-art">
-                            <span className="art-index">
-                                EXPERIMENTO N° 001
-                            </span>
                             <OrbitalScene />
-                            <div className="art-caption">
-                                <span className="crosshair">+</span>
-                                <span>CURIOSIDAD EN MOVIMIENTO</span>
-                                <span className="crosshair">+</span>
-                            </div>
                         </div>
                     </div>
                     <div className="hero-bottom">
@@ -620,10 +605,7 @@ const PortfolioPage = () => {
                             'PostgreSQL',
                             'Angular'
                         ].map((tech) => (
-                            <span key={tech}>
-                                <i>✳</i>
-                                {tech}
-                            </span>
+                            <span key={tech}>{tech}</span>
                         ))}
                     </div>
                 </div>
@@ -636,15 +618,8 @@ const PortfolioPage = () => {
                     <Reveal>
                         <div className="section-heading">
                             <div>
-                                <span className="eyebrow section-number">
-                                    01 / PROYECTOS SELECCIONADOS
-                                </span>
                                 <h2 id="projects-title">
-                                    Menos teoría.
-                                    <br />
-                                    <span className="muted-heading">
-                                        Más cosas hechas.
-                                    </span>
+                                    Proyectos seleccionados.
                                 </h2>
                             </div>
                             <p>
@@ -756,20 +731,7 @@ const PortfolioPage = () => {
                         <Reveal>
                             <div className="about-grid">
                                 <div className="about-heading">
-                                    <span className="eyebrow section-number">
-                                        02 / DETRÁS DEL CÓDIGO
-                                    </span>
-                                    <h2 id="about-title">
-                                        Curioso por
-                                        <br />
-                                        naturaleza.
-                                        <br />
-                                        <span className="serif-word">
-                                            Developer
-                                        </span>
-                                        <br />
-                                        por elección.
-                                    </h2>
+                                    <h2 id="about-title">Sobre mí.</h2>
                                     <div className="avatar-signature">
                                         <img
                                             src="/perfil.webp"
@@ -782,11 +744,6 @@ const PortfolioPage = () => {
                                             <strong>{profile.shortName}</strong>
                                             <span>Arequipa, Perú · UNSA</span>
                                         </div>
-                                        <Icon
-                                            name="spark"
-                                            width="28"
-                                            height="28"
-                                        />
                                     </div>
                                 </div>
                                 <div className="about-copy">
@@ -834,16 +791,7 @@ const PortfolioPage = () => {
                             </div>
                         </Reveal>
                         <div className="skills-heading">
-                            <h3>
-                                Las herramientas cambian.
-                                <br />
-                                <span className="muted">
-                                    La curiosidad se queda.
-                                </span>
-                            </h3>
-                            <span className="eyebrow">
-                                MI CAJA DE HERRAMIENTAS
-                            </span>
+                            <h3>Tecnologías</h3>
                         </div>
                         <div className="skills-grid">
                             {skillGroups.map((group, index) => (
@@ -888,15 +836,8 @@ const PortfolioPage = () => {
                     <Reveal>
                         <div className="section-heading">
                             <div>
-                                <span className="eyebrow section-number">
-                                    03 / EL CAMINO HASTA AQUÍ
-                                </span>
                                 <h2 id="career-title">
-                                    Aprender. Crear.
-                                    <br />
-                                    <span className="muted-heading">
-                                        Volver a empezar.
-                                    </span>
+                                    Experiencia y formación.
                                 </h2>
                             </div>
                             <a
@@ -1006,9 +947,9 @@ const PortfolioPage = () => {
                                 </span>
                             </div>
                             <h2 id="contact-title">
-                                Las buenas cosas
+                                Todo empieza
                                 <br />
-                                empiezan con un{' '}
+                                con un{' '}
                                 <a href={`mailto:${profile.email}`}>
                                     hola.
                                     <Icon name="arrow" />

@@ -3,8 +3,8 @@
     --orbit-y: 0deg;
     position: relative;
     width: 100%;
-    max-width: 620px;
-    aspect-ratio: 7 / 6;
+    max-width: 350px;
+    aspect-ratio: 10 / 9;
     margin-inline: auto;
     perspective: 1000px;
     isolation: isolate;
@@ -26,57 +26,25 @@
     overflow: visible;
 }
 
-.orbital-scene__label rect {
-    fill: #151914;
-    fill-opacity: .92;
-    stroke: #d5f279;
-    stroke-opacity: .22;
-    stroke-width: .7;
-}
-
-.orbital-scene__label text {
-    fill: #e5eadc;
-    font-family: inherit;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .2px;
-}
-
 .orbital-scene__satellite {
-    transform-origin: 280px 238px;
-    animation: orbital-travel 36s linear infinite;
-}
-
-.orbital-scene__satellite--slow {
-    animation-duration: 52s;
-    animation-direction: reverse;
-}
-
-.orbital-scene__label {
-    animation: orbital-label-float 7s ease-in-out infinite;
-}
-
-.orbital-scene__label--typescript {
-    animation-delay: -2.4s;
-}
-
-.orbital-scene__label--node {
-    animation-delay: -4.6s;
+    offset-path: path('M 24 180 A 176 65 0 1 0 376 180 A 176 65 0 1 0 24 180');
+    offset-distance: 18%;
+    animation: orbital-travel 60s linear infinite;
 }
 
 @keyframes orbital-travel {
+    from {
+        offset-distance: 18%;
+    }
+
     to {
-        transform: rotate(360deg);
+        offset-distance: 118%;
     }
 }
 
-@keyframes orbital-label-float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
+@media (max-width: 640px) {
+    .orbital-scene {
+        max-width: 230px;
     }
 }
 
@@ -86,8 +54,7 @@
         transition: none;
     }
 
-    .orbital-scene__satellite,
-    .orbital-scene__label {
+    .orbital-scene__satellite {
         animation: none;
     }
 }

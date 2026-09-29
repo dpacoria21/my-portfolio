@@ -4,16 +4,16 @@
     margin: min(16vh, 128px) auto auto;
     padding: 0;
     overflow: auto;
-    color: var(--text, #eeeae2);
-    background: var(--surface, #191c18);
-    border: 1px solid var(--line, #363a32);
-    border-radius: 20px;
+    color: var(--text, #edf3fc);
+    background: var(--surface, #0e1420);
+    border: 1px solid var(--line, #263449);
+    border-radius: 10px;
     box-shadow: 0 32px 100px #0008, 0 0 0 1px #ffffff04 inset;
     overscroll-behavior: contain;
 }
 
 .command-dialog::backdrop {
-    background: #080b08b8;
+    background: #050910b8;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
@@ -38,7 +38,7 @@
     letter-spacing: 0.18em;
     line-height: 1.6;
     text-transform: uppercase;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
 }
 
 .command-close {
@@ -50,7 +50,7 @@
     background: transparent;
     border: 1px solid transparent;
     border-radius: 50%;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-family: inherit;
     cursor: pointer;
 }
@@ -61,9 +61,9 @@
 }
 
 .command-close:hover {
-    color: var(--text, #eeeae2);
+    color: var(--text, #edf3fc);
     background: #ffffff09;
-    border-color: var(--line, #363a32);
+    border-color: var(--line, #263449);
 }
 
 .command-search {
@@ -72,21 +72,21 @@
     gap: 14px;
     margin: 0 24px;
     padding: 8px 0 22px;
-    border-bottom: 1px solid var(--line, #363a32);
+    border-bottom: 1px solid var(--line, #263449);
 }
 
 .command-search > svg {
     flex: 0 0 23px;
     width: 23px;
     height: 23px;
-    color: var(--accent, #d5f279);
+    color: var(--accent, #91baff);
 }
 
 .command-search input {
     width: 100%;
     min-width: 0;
     padding: 8px 0;
-    color: var(--text, #eeeae2);
+    color: var(--text, #edf3fc);
     background: transparent;
     border: 0;
     border-radius: 3px;
@@ -94,15 +94,15 @@
     font-family: inherit;
     font-size: 19px;
     line-height: 1.4;
-    caret-color: var(--accent, #d5f279);
+    caret-color: var(--accent, #91baff);
 }
 
 .command-search:focus-within {
-    border-bottom-color: var(--accent, #d5f279);
+    border-bottom-color: var(--accent, #91baff);
 }
 
 .command-search input::placeholder {
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     opacity: 0.72;
 }
 
@@ -116,9 +116,9 @@
     min-width: 21px;
     height: 22px;
     padding: 0 5px;
-    border: 1px solid var(--line, #363a32);
+    border: 1px solid var(--line, #263449);
     border-radius: 5px;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-family: inherit;
     font-size: 10px;
     line-height: 1;
@@ -126,7 +126,7 @@
 
 .command-results-label {
     margin: 20px 24px 10px;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-size: 11px;
     line-height: 1.4;
 }
@@ -139,7 +139,7 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     list-style: none;
-    scrollbar-color: var(--line, #363a32) transparent;
+    scrollbar-color: var(--line, #263449) transparent;
     scrollbar-width: thin;
 }
 
@@ -155,20 +155,20 @@
     min-height: 64px;
     padding: 12px;
     border: 1px solid transparent;
-    border-radius: 11px;
-    color: var(--text, #eeeae2);
+    border-radius: 5px;
+    color: var(--text, #edf3fc);
     text-decoration: none;
     transition: background 140ms ease, border-color 140ms ease;
 }
 
 .command-result[aria-selected='true'] {
-    background: #d5f27908;
-    border-color: #d5f27930;
+    background: #91baff0d;
+    border-color: #91baff30;
 }
 
 .command-result-index {
     flex-shrink: 0;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
     font-size: 11px;
     opacity: 0.7;
@@ -187,7 +187,7 @@
 }
 
 .command-result-description {
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-size: 11px;
     line-height: 1.5;
 }
@@ -195,19 +195,19 @@
 .command-result-arrow {
     margin-left: auto;
     padding-left: 6px;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-size: 21px;
 }
 
 .command-result[aria-selected='true'] .command-result-arrow,
 .command-result[aria-selected='true'] .command-result-index {
-    color: var(--accent, #d5f279);
+    color: var(--accent, #91baff);
     opacity: 1;
 }
 
 .command-close:focus-visible,
 .command-result:focus-visible {
-    outline: 2px solid var(--accent, #d5f279);
+    outline: 2px solid var(--accent, #91baff);
     outline-offset: 2px;
 }
 
@@ -219,7 +219,7 @@
 
 .command-empty p {
     margin: 9px 0 0;
-    color: var(--muted, #a7aca2);
+    color: var(--muted, #9aa8bc);
     font-size: 12px;
     line-height: 1.6;
 }
@@ -230,8 +230,8 @@
     flex-wrap: wrap;
     gap: 16px;
     padding: 14px 24px;
-    border-top: 1px solid var(--line, #363a32);
-    color: var(--muted, #a7aca2);
+    border-top: 1px solid var(--line, #263449);
+    color: var(--muted, #9aa8bc);
     font-size: 10px;
 }
 
@@ -266,7 +266,7 @@
 @media (max-width: 520px) {
     .command-dialog {
         margin-top: 32px;
-        border-radius: 16px;
+        border-radius: 10px;
     }
 
     .command-search {
