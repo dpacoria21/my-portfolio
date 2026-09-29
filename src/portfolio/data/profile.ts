@@ -67,7 +67,7 @@ export const profile: ProfessionalProfile = {
     name: 'Diego Ivan Pacori Anccasi',
     shortName: 'Diego Pacori',
     role: 'Full-Stack Developer',
-    headline: 'Interfaces que conectan. Sistemas que resuelven.',
+    headline: 'Desarrollo web, móvil y backend.',
     summary:
     'Desarrollo aplicaciones web y móviles, desde la interfaz hasta las APIs y los datos. Estudio el último año de Ingeniería de Sistemas en la UNSA y trabajo en el backend de Senses Psicólogos.',
     location: 'Arequipa, Perú',
@@ -189,7 +189,7 @@ export const selectedProjects: SelectedProject[] = [
     },
     {
         id: 'finger-tracking',
-        title: 'Movimiento convertido en interacción',
+        title: 'Reconocimiento de movimiento',
         category: 'Visión artificial',
         description:
       'Reconocimiento del movimiento de los dedos mediante una webcam para controlar aplicaciones interactivas.',
@@ -208,7 +208,7 @@ export const skillGroups: SkillGroup[] = [
     {
         id: 'frontend',
         title: 'Frontend',
-        description: 'Interfaces web, estado y movimiento.',
+        description: 'Interfaces web, gestión de estado y animaciones.',
         skills: ['React', 'Angular', 'Astro', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Redux', 'Tailwind CSS', 'Framer Motion', 'React Hook Form', 'Bootstrap', 'Material UI', 'Angular Material'],
     },
     {

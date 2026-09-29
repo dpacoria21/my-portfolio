@@ -1,4 +1,4 @@
-import { KeyboardEvent, MouseEvent, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { type KeyboardEvent, type MouseEvent, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import './CommandPalette.css';
 
 interface CommandItem {
@@ -33,6 +33,8 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const resultsRef = useRef<HTMLUListElement>(null);
+    const closeTimerRef = useRef<number | null>(null);
+    const previousOverflowRef = useRef<string | null>(null);
     const [query, setQuery] = useState('');
     const [activeIndex, setActiveIndex] = useState(0);
     const id = useId();
@@ -46,21 +48,70 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
     }, [items, query]);
     const selectedIndex = Math.min(activeIndex, Math.max(0, filteredItems.length - 1));
 
+    const finishClose = useCallback(() => {
+        if (closeTimerRef.current !== null) {
+            window.clearTimeout(closeTimerRef.current);
+            closeTimerRef.current = null;
+        }
+        const dialog = dialogRef.current;
+        if (dialog?.open) dialog.close();
+        if (previousOverflowRef.current !== null) {
+            document.body.style.overflow = previousOverflowRef.current;
+            previousOverflowRef.current = null;
+        }
+    }, []);
+
     useEffect(() => {
         const dialog = dialogRef.current;
         if (!dialog) return;
+        if (closeTimerRef.current !== null) {
+            window.clearTimeout(closeTimerRef.current);
+            closeTimerRef.current = null;
+        }
         if (!open) {
-            if (dialog.open) dialog.close();
+            if (!dialog.open) return;
+            dialog.dataset.state = 'closing';
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                finishClose();
+            } else {
+                closeTimerRef.current = window.setTimeout(() => {
+                    if (dialog.dataset.state === 'closing') finishClose();
+                }, 240);
+            }
             return;
         }
-        if (!dialog.open) dialog.showModal();
-        inputRef.current?.focus();
-        const previousOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = previousOverflow;
+        if (previousOverflowRef.current === null) {
+            previousOverflowRef.current = document.body.style.overflow;
+            document.body.style.overflow = 'hidden';
+        }
+        if (!dialog.open) {
+            dialog.dataset.state = 'opening';
+            dialog.showModal();
+            // Establish the initial styles before transitioning into the top layer.
+            dialog.getBoundingClientRect();
+        }
+        dialog.dataset.state = 'open';
+        inputRef.current?.focus({ preventScroll: true });
+    }, [open, finishClose]);
+
+    useEffect(() => {
+        const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const handlePreference = () => {
+            if (preference.matches && dialogRef.current?.dataset.state === 'closing') finishClose();
         };
-    }, [open]);
+        preference.addEventListener('change', handlePreference);
+        return () => {
+            preference.removeEventListener('change', handlePreference);
+            if (closeTimerRef.current !== null) {
+                window.clearTimeout(closeTimerRef.current);
+                closeTimerRef.current = null;
+            }
+            if (previousOverflowRef.current !== null) {
+                document.body.style.overflow = previousOverflowRef.current;
+                previousOverflowRef.current = null;
+            }
+        };
+    }, [finishClose]);
 
     useEffect(() => {
         if (open) {
@@ -68,7 +119,7 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
         }
     }, [open, selectedIndex, filteredItems]);
 
-    const close = () => dialogRef.current?.close();
+    const close = () => onClose();
 
     const handleBackdrop = (event: MouseEvent<HTMLDialogElement>) => {
         if (event.target !== event.currentTarget) return;
@@ -79,7 +130,7 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
     };
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-        if (event.altKey || event.ctrlKey || event.metaKey || filteredItems.length === 0) return;
+        if (!open || event.altKey || event.ctrlKey || event.metaKey || filteredItems.length === 0) return;
         if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
             event.preventDefault();
             const direction = event.key === 'ArrowDown' ? 1 : -1;
@@ -98,14 +149,25 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
             className='command-dialog'
             aria-labelledby={`${id}-title`}
             onClick={handleBackdrop}
-            onClose={() => {
+            onCancel={event => { event.preventDefault(); close(); }}
+            onTransitionEnd={event => {
+                if (
+                    event.target === event.currentTarget &&
+                    event.propertyName === 'opacity' &&
+                    !open &&
+                    getComputedStyle(event.currentTarget).opacity === '0'
+                ) finishClose();
+            }}
+            onClose={event => {
+                if (event.currentTarget.open) return;
+                finishClose();
                 setQuery('');
                 setActiveIndex(0);
                 if (open) onClose();
             }}
         >
             <header className='command-header'>
-                <h2 id={`${id}-title`}>Explora el portafolio</h2>
+                <h2 id={`${id}-title`}>Navegación rápida</h2>
                 <button type='button' className='command-close' onClick={close} aria-label='Cerrar búsqueda'>
                     <span aria-hidden='true'>×</span>
                 </button>
@@ -116,7 +178,7 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
                         <circle cx='10.5' cy='10.5' r='6.5' />
                         <path d='m16 16 4 4' />
                     </svg>
-                    <label className='command-sr-only' htmlFor={`${id}-search`}>Buscar una sección, proyecto o enlace</label>
+                    <label className='command-sr-only' htmlFor={`${id}-search`}>Buscar secciones, proyectos o documentos</label>
                     <input
                         ref={inputRef}
                         id={`${id}-search`}
@@ -126,7 +188,7 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
                         aria-expanded={open}
                         aria-controls={resultsId}
                         aria-activedescendant={filteredItems.length > 0 ? `${id}-option-${selectedIndex}` : undefined}
-                        placeholder='¿Qué te gustaría explorar?'
+                        placeholder='Buscar secciones, proyectos o documentos'
                         autoComplete='off'
                         spellCheck={false}
                         value={query}
@@ -135,44 +197,46 @@ export function CommandPalette({ open, onClose, items }: CommandPaletteProps) {
                     <kbd className='command-escape' aria-hidden='true'>esc</kbd>
                 </div>
                 <p className='command-results-label'>{query.trim() ? 'Resultados de búsqueda' : 'Accesos directos'}</p>
-                <ul ref={resultsRef} id={resultsId} className='command-results' role='listbox' aria-label='Accesos del portafolio'>
-                    {filteredItems.map((item, index) => (
-                        <li key={item.id} role='presentation'>
-                            <a
-                                id={`${id}-option-${index}`}
-                                className='command-result'
-                                role='option'
-                                aria-selected={index === selectedIndex}
-                                href={item.href}
-                                target={item.external ? '_blank' : undefined}
-                                rel={item.external ? 'noopener noreferrer' : undefined}
-                                tabIndex={index === selectedIndex ? 0 : -1}
-                                onPointerMove={() => setActiveIndex(index)}
-                                onFocus={() => setActiveIndex(index)}
-                                onClick={close}
-                            >
-                                <span className='command-result-index' aria-hidden='true'>{String(index + 1).padStart(2, '0')}</span>
-                                <span className='command-result-copy'>
-                                    <span className='command-result-title'>{item.label}</span>
-                                    {item.description && <span className='command-result-description'>{item.description}</span>}
-                                </span>
-                                <span className='command-result-arrow' aria-hidden='true'>{item.external ? '↗' : '↵'}</span>
-                                {item.external && <span className='command-sr-only'>Se abre en una pestaña nueva</span>}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-                {filteredItems.length === 0 && (
-                    <div className='command-empty' role='status'>
-                        <span>No encontré coincidencias.</span>
-                        <p>Prueba con «proyectos», «experiencia» o «CV».</p>
-                    </div>
-                )}
+                <div className='command-results-shell'>
+                    <ul ref={resultsRef} id={resultsId} className='command-results' role='listbox' aria-label='Accesos del portafolio'>
+                        {filteredItems.map((item, index) => (
+                            <li key={item.id} role='presentation'>
+                                <a
+                                    id={`${id}-option-${index}`}
+                                    className='command-result'
+                                    role='option'
+                                    aria-selected={index === selectedIndex}
+                                    href={item.href}
+                                    target={item.external ? '_blank' : undefined}
+                                    rel={item.external ? 'noopener noreferrer' : undefined}
+                                    tabIndex={index === selectedIndex ? 0 : -1}
+                                    onPointerMove={() => setActiveIndex(index)}
+                                    onFocus={() => setActiveIndex(index)}
+                                    onClick={close}
+                                >
+                                    <span className='command-result-index' aria-hidden='true'>{String(index + 1).padStart(2, '0')}</span>
+                                    <span className='command-result-copy'>
+                                        <span className='command-result-title'>{item.label}</span>
+                                        {item.description && <span className='command-result-description'>{item.description}</span>}
+                                    </span>
+                                    <span className='command-result-arrow' aria-hidden='true'>{item.external ? '↗' : '↵'}</span>
+                                    {item.external && <span className='command-sr-only'>Se abre en una pestaña nueva</span>}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    {filteredItems.length === 0 && (
+                        <div className='command-empty' role='status'>
+                            <span>No se encontraron resultados.</span>
+                            <p>Busca «proyectos», «experiencia» o «CV».</p>
+                        </div>
+                    )}
+                </div>
             </div>
             <footer className='command-footer'>
-                <span><kbd>↑</kbd><kbd>↓</kbd> para explorar</span>
+                <span><kbd>↑</kbd><kbd>↓</kbd> para navegar</span>
                 <span><kbd>↵</kbd> para abrir</span>
-                <span className='command-footer-note'>Sigue tu curiosidad.</span>
+                <span className='command-footer-note'><kbd>esc</kbd> para cerrar</span>
             </footer>
         </dialog>
     );

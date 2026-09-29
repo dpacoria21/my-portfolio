@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import {
     achievements,
@@ -12,11 +12,12 @@ import {
 import { Icon } from '../components/Icon';
 import { OrbitalScene } from '../components/OrbitalScene';
 import { CommandPalette } from '../components/CommandPalette';
+import { SkillAccordion } from '../components/SkillAccordion';
 import './PortfolioPage.css';
 
 const navigation = [
     { id: 'proyectos', label: 'Proyectos' },
-    { id: 'sobre-mi', label: 'Sobre mí' },
+    { id: 'sobre-mi', label: 'Perfil' },
     { id: 'trayectoria', label: 'Trayectoria' },
     { id: 'contacto', label: 'Contacto' }
 ];
@@ -60,7 +61,7 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
                 <span>
                     senses<span className="senses-period">.</span>
                 </span>
-                <p>Personas. Conexiones. Cuidado.</p>
+                <p>Gestión de pacientes y citas</p>
                 <div className="art-nodes">
                     <span>API</span>
                     <i />
@@ -73,9 +74,9 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
         {project.id === 'scheduler' && (
             <div className="scheduler-art">
                 <div className="scheduler-word">
-                    Make room
+                    Calendario
                     <br />
-                    <em>for your day.</em>
+                    <em>y tareas.</em>
                 </div>
                 <div className="schedule-phone">
                     <div className="phone-notch" />
@@ -92,15 +93,15 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
                     </div>
                     <div className="phone-event">
                         <small>09:00 — 10:30</small>
-                        <b>Un nuevo proyecto</b>
+                        <b>Reunión de proyecto</b>
                     </div>
                     <div className="phone-event phone-event--lavender">
                         <small>14:00 — 15:00</small>
-                        <b>Tiempo para crear</b>
+                        <b>Desarrollo</b>
                     </div>
                     <div className="phone-event phone-event--light">
                         <small>17:00</small>
-                        <b>Una idea más.</b>
+                        <b>Revisión de tareas</b>
                     </div>
                 </div>
             </div>
@@ -151,7 +152,7 @@ const ProjectVisual = ({ project }: { project: SelectedProject }) => (
                         <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="4" />
                     ))}
                 </svg>
-                <span className="vision-caption">La interfaz eres tú.</span>
+                <span className="vision-caption">Seguimiento de manos</span>
             </div>
         )}
         <span className="project-visual-arrow">
@@ -168,26 +169,63 @@ const ProjectDialog = ({
     onClose: () => void;
 }) => {
     const ref = useRef<HTMLDialogElement>(null);
+    const animationRef = useRef<Animation | null>(null);
+    const closingRef = useRef(false);
+    const reduced = useReducedMotion();
+
+    const requestClose = () => {
+        const dialog = ref.current;
+        if (!dialog?.open || closingRef.current) return;
+        closingRef.current = true;
+        animationRef.current?.cancel();
+        if (reduced) {
+            dialog.close();
+            return;
+        }
+        dialog.dataset.closing = 'true';
+        const animation = dialog.animate(
+            [{ opacity: 1, transform: 'translateY(0) scale(1)' }, { opacity: 0, transform: 'translateY(12px) scale(.985)' }],
+            { duration: 220, easing: 'cubic-bezier(.4, 0, 1, 1)', fill: 'forwards' }
+        );
+        animationRef.current = animation;
+        animation.finished.then(() => {
+            if (animationRef.current === animation && dialog.open) dialog.close();
+        }).catch(() => { /* A new transition or unmount cancelled the animation. */ });
+    };
+
     useEffect(() => {
         const dialog = ref.current;
-        if (project && dialog && !dialog.open) dialog.showModal();
-        if (!project && dialog?.open) dialog.close();
-        if (!project) return;
+        animationRef.current?.cancel();
+        if (!dialog) return;
+        if (!project) {
+            if (dialog.open) dialog.close();
+            return;
+        }
+        closingRef.current = false;
+        delete dialog.dataset.closing;
+        if (!dialog.open) dialog.showModal();
+        if (!reduced) {
+            animationRef.current = dialog.animate(
+                [{ opacity: 0, transform: 'translateY(16px) scale(.985)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }],
+                { duration: 320, easing: 'cubic-bezier(.22, 1, .36, 1)' }
+            );
+        }
         const previous = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
         return () => {
+            animationRef.current?.cancel();
             document.body.style.overflow = previous;
         };
-    }, [project]);
+    }, [project, reduced]);
     return (
         <dialog
             ref={ref}
             className="project-dialog"
             aria-labelledby="project-dialog-title"
-            onCancel={onClose}
+            onCancel={event => { event.preventDefault(); requestClose(); }}
             onClose={onClose}
             onClick={(event) => {
-                if (event.target === event.currentTarget) onClose();
+                if (event.target === event.currentTarget) requestClose();
             }}
         >
             {project && (
@@ -195,7 +233,7 @@ const ProjectDialog = ({
                     <button
                         className="icon-button dialog-close"
                         aria-label="Cerrar proyecto"
-                        onClick={onClose}
+                        onClick={requestClose}
                         autoFocus
                     >
                         <Icon name="close" />
@@ -518,24 +556,23 @@ const PortfolioPage = () => {
                     <div className="hero-grid">
                         <div className="hero-copy">
                             <p className="hero-intro">
-                                Hola, soy {profile.shortName}.
+                                {profile.shortName}
                             </p>
                             <h1 id="hero-title">
-                                Ideas que
+                                Desarrollo
                                 <br />
-                                cobran <span>vida.</span>
+                                <span>full-stack.</span>
                             </h1>
                             <p className="hero-description">
-                                Del primer píxel a la última línea de código.
-                                <br className="desktop-break" /> Construyo
-                                experiencias web y móviles con intención.
+                                Aplicaciones web y móviles, APIs REST y bases de datos.
+                                <br className="desktop-break" /> React, Angular, React Native y Node.js.
                             </p>
                             <div className="hero-cta">
                                 <a
                                     className="button button-primary"
                                     href="#proyectos"
                                 >
-                                    Explorar proyectos <Icon name="arrow" />
+                                    Ver proyectos <Icon name="arrow" />
                                 </a>
                                 <a
                                     className="button button-text"
@@ -565,8 +602,6 @@ const PortfolioPage = () => {
                                     LinkedIn
                                     <Icon name="arrow" width="13" height="13" />
                                 </a>
-                                <span className="social-divider" />
-                                <span>También me dicen Gunter.</span>
                             </div>
                         </div>
                         <div className="hero-art">
@@ -587,7 +622,7 @@ const PortfolioPage = () => {
                             className="scroll-cue"
                             aria-label="Ir a proyectos"
                         >
-                            <span>UN POCO DE LO QUE HAGO</span>
+                            <span>PROYECTOS</span>
                             <Icon name="down" />
                         </a>
                     </div>
@@ -624,9 +659,9 @@ const PortfolioPage = () => {
                                 </h2>
                             </div>
                             <p>
-                                Problemas reales, distintas tecnologías.
+                                Desarrollo web, móvil y backend.
                                 <br />
-                                Una selección de lo que he construido.
+                                Proyectos, tecnologías y contribuciones.
                             </p>
                         </div>
                     </Reveal>
@@ -661,44 +696,54 @@ const PortfolioPage = () => {
                             proyectos
                         </span>
                     </div>
-                    <div className="project-grid">
-                        {filteredProjects.map((project) => (
-                            <Reveal key={project.id} className="project-card">
-                                <article id={`proyecto-${project.id}`}>
-                                    <button
-                                        className="project-open"
-                                        onClick={() => setSelected(project)}
-                                        aria-label={`Ver detalles de ${project.title}`}
-                                    >
-                                        <ProjectVisual project={project} />
-                                    </button>
-                                    <div className="project-info">
-                                        <div className="project-title-row">
-                                            <button
-                                                onClick={() =>
-                                                    setSelected(project)
-                                                }
-                                                className="project-name"
-                                            >
-                                                {project.title}
-                                            </button>
-                                            <span>{project.category}</span>
+                    <motion.div layout className="project-grid" transition={{ duration: reduced ? 0 : 0.35 }}>
+                        <AnimatePresence initial={false} mode="popLayout">
+                            {filteredProjects.map((project) => (
+                                <motion.div
+                                    key={project.id}
+                                    layout="position"
+                                    className="project-card"
+                                    initial={{ opacity: 0, y: reduced ? 0 : 12 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: reduced ? 0 : -8 }}
+                                    transition={{ duration: reduced ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                >
+                                    <article id={`proyecto-${project.id}`}>
+                                        <button
+                                            className="project-open"
+                                            onClick={() => setSelected(project)}
+                                            aria-label={`Ver detalles de ${project.title}`}
+                                        >
+                                            <ProjectVisual project={project} />
+                                        </button>
+                                        <div className="project-info">
+                                            <div className="project-title-row">
+                                                <button
+                                                    onClick={() =>
+                                                        setSelected(project)
+                                                    }
+                                                    className="project-name"
+                                                >
+                                                    {project.title}
+                                                </button>
+                                                <span>{project.category}</span>
+                                            </div>
+                                            <p>{project.description}</p>
+                                            <div className="tag-list">
+                                                {project.technologies
+                                                    .slice(0, 4)
+                                                    .map((tech) => (
+                                                        <span key={tech}>
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                            </div>
                                         </div>
-                                        <p>{project.description}</p>
-                                        <div className="tag-list">
-                                            {project.technologies
-                                                .slice(0, 4)
-                                                .map((tech) => (
-                                                    <span key={tech}>
-                                                        {tech}
-                                                    </span>
-                                                ))}
-                                        </div>
-                                    </div>
-                                </article>
-                            </Reveal>
-                        ))}
-                    </div>
+                                    </article>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </motion.div>
                     <a
                         href={profile.github}
                         className="github-strip"
@@ -710,11 +755,10 @@ const PortfolioPage = () => {
                         </span>
                         <span>
                             <strong>
-                                El código también cuenta una historia.
+                                Repositorios en GitHub
                             </strong>
                             <span>
-                                Más proyectos, experimentos y algoritmos en
-                                GitHub.
+                                Código fuente, proyectos y soluciones de algoritmos.
                             </span>
                         </span>
                         <span className="github-handle">
@@ -732,11 +776,11 @@ const PortfolioPage = () => {
                         <Reveal>
                             <div className="about-grid">
                                 <div className="about-heading">
-                                    <h2 id="about-title">Sobre mí.</h2>
+                                    <h2 id="about-title">Perfil profesional.</h2>
                                     <div className="avatar-signature">
                                         <img
                                             src="/perfil.webp"
-                                            alt="Gunter, mi avatar"
+                                            alt="Avatar de Diego Pacori"
                                             width="48"
                                             height="48"
                                             loading="lazy"
@@ -749,33 +793,29 @@ const PortfolioPage = () => {
                                 </div>
                                 <div className="about-copy">
                                     <p className="about-lead">
-                                        Me gusta entender cómo funcionan las
-                                        cosas.
+                                        Experiencia en aplicaciones web y móviles.
                                         <span className="muted">
                                             {' '}
-                                            Y después, encontrar una forma de
-                                            hacerlas mejor.
+                                            Desarrollo de APIs y bases de datos.
                                         </span>
                                     </p>
                                     <p>{profile.summary}</p>
                                     <p>
-                                        Entre interfaces, APIs y competencias de
-                                        programación, disfruto conectar la
-                                        lógica con la creatividad. Cada proyecto
-                                        es una oportunidad para aprender algo
-                                        nuevo y construir algo útil.
+                                        También participo en programación competitiva
+                                        y he desarrollado proyectos de visión por
+                                        computador con Python.
                                     </p>
                                     <div className="about-facts">
                                         <div>
-                                            <span>MI ENFOQUE</span>
+                                            <span>ÁREAS DE DESARROLLO</span>
                                             <strong>
                                                 Web + móvil + backend
                                             </strong>
                                         </div>
                                         <div>
-                                            <span>MI MOTOR</span>
+                                            <span>FORMACIÓN</span>
                                             <strong>
-                                                Aprender construyendo
+                                                Ingeniería de Sistemas · UNSA
                                             </strong>
                                         </div>
                                     </div>
@@ -785,44 +825,19 @@ const PortfolioPage = () => {
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        Mi recorrido, en PDF
+                                        Portafolio en PDF
                                         <Icon name="arrow" />
                                     </a>
                                 </div>
                             </div>
                         </Reveal>
                         <div className="skills-heading">
-                            <h3>Tecnologías</h3>
+                            <h3>Tecnologías y herramientas</h3>
                         </div>
                         <div className="skills-grid">
                             {skillGroups.map((group, index) => (
                                 <Reveal key={group.id}>
-                                    <details className="skill-group">
-                                        <summary>
-                                            <span className="skill-index">
-                                                0{index + 1}
-                                            </span>
-                                            <h4>{group.title}</h4>
-                                            <span className="skill-expand">
-                                                +
-                                            </span>
-                                        </summary>
-                                        <p>{group.description}</p>
-                                        <div className="skill-preview">
-                                            {group.skills
-                                                .slice(0, 4)
-                                                .join(' / ')}
-                                        </div>
-                                        <div className="skill-detail">
-                                            <div className="tag-list">
-                                                {group.skills.map((skill) => (
-                                                    <span key={skill}>
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </details>
+                                    <SkillAccordion group={group} index={index} />
                                 </Reveal>
                             ))}
                         </div>
@@ -857,9 +872,9 @@ const PortfolioPage = () => {
                                 EXPERIENCIA & FORMACIÓN
                             </span>
                             <p>
-                                Cada etapa suma una forma
+                                Experiencia laboral y
                                 <br />
-                                nueva de ver los problemas.
+                                formación universitaria.
                             </p>
                             <div className="education-note">
                                 <Icon name="code" />
@@ -899,7 +914,7 @@ const PortfolioPage = () => {
                     </div>
                     <div className="achievements-heading">
                         <Icon name="spark" />
-                        <h3>También disfruto un buen desafío.</h3>
+                        <h3>Logros y reconocimientos</h3>
                         <span>PROGRAMACIÓN & RECONOCIMIENTOS</span>
                     </div>
                     <div className="achievement-grid">
@@ -940,27 +955,23 @@ const PortfolioPage = () => {
                         <Reveal>
                             <div className="contact-top">
                                 <span className="eyebrow">
-                                    04 / LA SIGUIENTE IDEA
+                                    04 / CONTACTO
                                 </span>
                                 <span className="contact-location">
                                     <Icon name="globe" width="15" height="15" />
-                                    DESDE AREQUIPA, PARA EL MUNDO
+                                    AREQUIPA, PERÚ
                                 </span>
                             </div>
                             <h2 id="contact-title">
-                                Todo empieza
-                                <br />
-                                con un{' '}
                                 <a href={`mailto:${profile.email}`}>
-                                    hola.
+                                    Contacto profesional.
                                     <Icon name="arrow" />
                                 </a>
                             </h2>
                             <div className="contact-bottom">
                                 <div>
                                     <p>
-                                        ¿Un proyecto en mente? Me gustaría
-                                        escucharlo.
+                                        Consultas sobre proyectos y oportunidades profesionales.
                                     </p>
                                     <div className="email-row">
                                         <a href={`mailto:${profile.email}`}>
@@ -989,7 +1000,7 @@ const PortfolioPage = () => {
                                     className="button contact-button"
                                     href={`mailto:${profile.email}`}
                                 >
-                                    Conversemos
+                                    Enviar correo
                                     <Icon name="arrow" />
                                 </a>
                             </div>
@@ -1007,7 +1018,7 @@ const PortfolioPage = () => {
                     dp<span>.</span>
                 </a>
                 <p>
-                    Hecho con intención, por Diego Pacori.
+                    Diego Pacori · Full-Stack Developer
                     <br />
                     <span>© {year}</span>
                 </p>

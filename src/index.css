@@ -44,6 +44,9 @@ svg { flex-shrink: 0; }
 img { display: block; max-width: 100%; }
 button, input { border-radius: 0; }
 h1, h2, h3, p { margin: 0; }
+body, .site-header, .contact-section, .skill-group, .tag-list > span {
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
 ::selection { background: var(--accent); color: var(--accent-text); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }

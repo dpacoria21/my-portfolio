@@ -8,13 +8,15 @@ Portafolio personal de un Full-Stack Developer de Arequipa, Perú. Presenta proy
 
 Preferencia del autor: diseño minimalista, con negro, azul oscuro y azul claro. Usar tipografía limpia, espacio libre y movimiento discreto. Mantener esta paleta en futuras actualizaciones.
 
+El contenido debe tener un tono profesional, directo y basado en experiencia documentada. Evitar eslóganes, frases motivacionales y afirmaciones sobre la personalidad del autor. Las interacciones deben tener transiciones suaves y respetar la preferencia de movimiento reducido.
+
 ## Experiencia del portafolio
 
 - Diseño adaptable a móvil y escritorio, con temas claro y oscuro. La preferencia se conserva en el navegador.
-- Escena orbital en SVG y CSS que responde al puntero, transiciones de entrada y progreso de lectura.
+- Planeta en SVG con rotación 3D, arrastre e inercia. Las tecnologías aparecen según su posición; incluye controles de giro y pausa, y detiene la animación fuera de pantalla.
 - Búsqueda rápida con `Ctrl + K` o `Cmd + K`: secciones, proyectos, CV y perfiles. Permite navegar con flechas, abrir con Enter y cerrar con Escape.
-- Filtros por categoría y fichas de proyectos con contribuciones, tecnologías, código o evidencia disponible.
-- Grupos de habilidades desplegables, trayectoria profesional y reconocimientos.
+- Filtros por categoría y fichas de proyectos con transiciones de apertura y cierre, contribuciones, tecnologías, código o evidencia disponible.
+- Grupos de habilidades con apertura gradual y herramientas que aparecen en secuencia, trayectoria profesional y reconocimientos.
 - Acceso al CV y al portafolio en PDF, enlaces profesionales y copia del correo electrónico.
 - Navegación por teclado, enlace para saltar al contenido y adaptación de las animaciones a la preferencia de movimiento reducido.
 
