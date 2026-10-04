@@ -1,0 +1,563 @@
+{
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "b01",
+      "level": 1,
+      "type": "analogia",
+      "prompt": "Semilla es a árbol como…",
+      "options": [
+        "hoja es a árbol",
+        "nido es a ave",
+        "raíz es a tierra",
+        "huevo es a ave"
+      ],
+      "answer": 3,
+      "explanation": "Una semilla puede desarrollarse hasta formar un árbol; un huevo puede desarrollarse hasta dar lugar a un ave. El nido aloja al ave, pero no se transforma en ella.",
+      "tip": "Convierte cada pareja en una oración y conserva el mismo verbo.",
+      "relation": "Etapa inicial → organismo desarrollado"
+    },
+    {
+      "id": "b02",
+      "level": 1,
+      "type": "analogia",
+      "prompt": "Página es a libro como…",
+      "options": [
+        "biblioteca es a libro",
+        "pintura es a pincel",
+        "lector es a libro",
+        "ladrillo es a muro"
+      ],
+      "answer": 3,
+      "explanation": "Una página es una pieza que integra un libro; un ladrillo es una pieza que integra un muro. La biblioteca contiene libros, pero invierte la dirección: contenedor → elemento.",
+      "tip": "Comprueba también el orden de los términos.",
+      "relation": "Parte constitutiva → conjunto"
+    },
+    {
+      "id": "b03",
+      "level": 1,
+      "type": "analogia",
+      "prompt": "Tijeras es a cortar como…",
+      "options": [
+        "regla es a dibujante",
+        "papel es a escribir",
+        "regla es a medir",
+        "cuchillo es a cocina"
+      ],
+      "answer": 2,
+      "explanation": "Las tijeras sirven para cortar y la regla sirve para medir. El papel recibe la escritura; no es la herramienta que la realiza.",
+      "tip": "Distingue la herramienta del material sobre el que se trabaja.",
+      "relation": "Herramienta → función"
+    },
+    {
+      "id": "b04",
+      "level": 1,
+      "type": "analogia",
+      "prompt": "Caliente es a frío como…",
+      "options": [
+        "tibio es a templado",
+        "grande es a enorme",
+        "rápido es a velocidad",
+        "lleno es a vacío"
+      ],
+      "answer": 3,
+      "explanation": "Caliente y frío expresan estados opuestos; lleno y vacío también. Grande y enorme difieren en grado, pero no son contrarios.",
+      "tip": "Busca oposición, no una simple diferencia de intensidad.",
+      "relation": "Estados opuestos"
+    },
+    {
+      "id": "b05",
+      "level": 1,
+      "type": "analogia",
+      "prompt": "Abeja es a colmena como…",
+      "options": [
+        "ave es a vuelo",
+        "oveja es a lana",
+        "pez es a aleta",
+        "hormiga es a hormiguero"
+      ],
+      "answer": 3,
+      "explanation": "La colmena es el lugar donde vive una comunidad de abejas; el hormiguero cumple esa función para las hormigas. La aleta es una parte del pez, no su hogar.",
+      "tip": "Nombra el vínculo: aquí se trata del animal y su vivienda.",
+      "relation": "Animal → vivienda colectiva"
+    },
+    {
+      "id": "b06",
+      "level": 1,
+      "type": "analogia",
+      "prompt": "Sed es a beber como…",
+      "options": [
+        "hambre es a comer",
+        "cansancio es a correr",
+        "sueño es a despertar",
+        "frío es a temblar"
+      ],
+      "answer": 0,
+      "explanation": "Beber satisface la sed; comer satisface el hambre. Temblar puede ser una reacción al frío, pero no es la acción equivalente de satisfacer una necesidad.",
+      "tip": "No confundas la respuesta que alivia una necesidad con un síntoma.",
+      "relation": "Necesidad → acción que la satisface"
+    },
+    {
+      "id": "b07",
+      "level": 1,
+      "type": "vocabulario",
+      "prompt": "«Aunque falló varias veces, Irene fue tenaz y siguió intentándolo». Aquí, tenaz significa…",
+      "options": [
+        "perseverante",
+        "indiferente",
+        "apresurada",
+        "afortunada"
+      ],
+      "answer": 0,
+      "explanation": "Seguir intentándolo pese a los fallos muestra perseverancia. Ser afortunada describiría la suerte, no la constancia.",
+      "tip": "Usa lo que hace el personaje como pista del significado."
+    },
+    {
+      "id": "b08",
+      "level": 1,
+      "type": "vocabulario",
+      "prompt": "«La explicación fue clara: todos la comprendieron a la primera». Clara significa…",
+      "options": [
+        "breve",
+        "famosa",
+        "luminosa",
+        "comprensible"
+      ],
+      "answer": 3,
+      "explanation": "Que todos comprendieran la explicación indica que era comprensible. Podría haber sido larga: el texto no dice que fuera breve.",
+      "tip": "Elige el sentido que encaja en la oración, no cualquier significado de la palabra."
+    },
+    {
+      "id": "b09",
+      "level": 1,
+      "type": "cohesion",
+      "prompt": "Elige el conector que expresa consecuencia: «El sendero estaba cerrado. ___, elegimos otra ruta».",
+      "options": [
+        "Por ejemplo",
+        "Por lo tanto",
+        "Sin embargo",
+        "En cambio"
+      ],
+      "answer": 1,
+      "explanation": "Elegir otra ruta es la consecuencia del cierre. Sin embargo marcaría un contraste, no esa relación de causa y efecto.",
+      "tip": "Primero identifica la relación entre las dos ideas."
+    },
+    {
+      "id": "b10",
+      "level": 1,
+      "type": "cohesion",
+      "prompt": "«Lucía guardó las llaves en la mochila. Después, las buscó durante diez minutos». ¿A qué se refiere «las»?",
+      "options": [
+        "A la mochila",
+        "A Lucía",
+        "A las llaves",
+        "A los minutos"
+      ],
+      "answer": 2,
+      "explanation": "Las retoma llaves: ambas formas son femeninas y plurales. Mochila es singular y exigiría la.",
+      "tip": "Comprueba el género, el número y el sentido del pronombre."
+    },
+    {
+      "id": "b11",
+      "level": 1,
+      "type": "inferencia",
+      "prompt": "Todos los libros del estante rojo son de poesía. Este libro está en el estante rojo. ¿Qué se deduce?",
+      "options": [
+        "No hay poesía en otros estantes.",
+        "Este libro es de poesía.",
+        "Todos los libros de poesía están en ese estante.",
+        "Este libro es el único de poesía."
+      ],
+      "answer": 1,
+      "explanation": "La regla se aplica a este libro porque está en el estante rojo. No afirma que todos los libros de poesía deban estar allí.",
+      "tip": "Aplica la regla sin invertirla."
+    },
+    {
+      "id": "b12",
+      "level": 1,
+      "type": "inferencia",
+      "prompt": "La tienda cierra a las 18:00. Ana llegó a las 18:15 y encontró la puerta cerrada. ¿Qué afirma el texto?",
+      "options": [
+        "La tienda cerró antes de lo habitual.",
+        "Nadie había comprado ese día.",
+        "Ana llegó después de la hora de cierre.",
+        "Ana desconocía el horario."
+      ],
+      "answer": 2,
+      "explanation": "Las 18:15 son posteriores a las 18:00. Encontrar la puerta cerrada no permite saber si Ana conocía el horario.",
+      "tip": "Distingue un dato comprobable de una explicación imaginada."
+    },
+    {
+      "id": "b13",
+      "level": 2,
+      "type": "analogia",
+      "prompt": "Prólogo es a novela como…",
+      "options": [
+        "estribillo es a canción",
+        "preludio es a ópera",
+        "capítulo es a novela",
+        "desenlace es a cuento"
+      ],
+      "answer": 1,
+      "explanation": "Un prólogo introduce una novela; un preludio introduce una ópera. Un capítulo también es parte de una novela, pero no tiene necesariamente una función introductoria.",
+      "tip": "Una relación específica vale más que una coincidencia general.",
+      "relation": "Sección introductoria → obra"
+    },
+    {
+      "id": "b14",
+      "level": 2,
+      "type": "analogia",
+      "prompt": "Termómetro es a temperatura como…",
+      "options": [
+        "brújula es a distancia",
+        "balanza es a equilibrio",
+        "reloj es a puntualidad",
+        "barómetro es a presión"
+      ],
+      "answer": 3,
+      "explanation": "El termómetro mide la temperatura; el barómetro mide la presión. Un reloj mide el tiempo, pero no la puntualidad de una persona.",
+      "tip": "Comprueba qué magnitud mide realmente cada instrumento.",
+      "relation": "Instrumento → magnitud medida"
+    },
+    {
+      "id": "b15",
+      "level": 2,
+      "type": "analogia",
+      "prompt": "Boceto es a pintura terminada como…",
+      "options": [
+        "copia es a documento original",
+        "borrador es a ensayo definitivo",
+        "resumen es a libro publicado",
+        "marco es a cuadro expuesto"
+      ],
+      "answer": 1,
+      "explanation": "El boceto es una versión preliminar de una pintura y el borrador lo es de un ensayo. Un resumen reduce el contenido de otro texto; no es su versión preparatoria.",
+      "tip": "Distingue una etapa de elaboración de una transformación posterior.",
+      "relation": "Versión preliminar → obra terminada"
+    },
+    {
+      "id": "b16",
+      "level": 2,
+      "type": "analogia",
+      "prompt": "Atenuar es a intensidad como…",
+      "options": [
+        "mitigar es a gravedad",
+        "acentuar es a diferencia",
+        "analizar es a complejidad",
+        "medir es a longitud"
+      ],
+      "answer": 0,
+      "explanation": "Atenuar reduce la intensidad; mitigar reduce la gravedad de algo. Analizar la complejidad permite examinarla, pero no implica reducirla.",
+      "tip": "Mantén tanto la acción como su dirección: aquí se reduce una propiedad.",
+      "relation": "Reducir → propiedad reducida"
+    },
+    {
+      "id": "b17",
+      "level": 2,
+      "type": "analogia",
+      "prompt": "Cartógrafo es a mapa como…",
+      "options": [
+        "compositor es a partitura",
+        "guía es a itinerario recibido",
+        "intérprete es a partitura",
+        "lector es a novela"
+      ],
+      "answer": 0,
+      "explanation": "El cartógrafo elabora mapas; el compositor crea la música que puede quedar escrita en una partitura. El intérprete utiliza esa partitura para ejecutarla, sin ser necesariamente su creador.",
+      "tip": "Pregunta si la persona crea el producto o solamente lo utiliza.",
+      "relation": "Creador → producto de su trabajo"
+    },
+    {
+      "id": "b18",
+      "level": 2,
+      "type": "analogia",
+      "prompt": "Júbilo es a alegría como…",
+      "options": [
+        "serenidad es a calma",
+        "enojo es a furia",
+        "pánico es a miedo",
+        "tristeza es a felicidad"
+      ],
+      "answer": 2,
+      "explanation": "El júbilo es una alegría intensa; el pánico es un miedo intenso. Enojo y furia también cambian de intensidad, pero la pareja va de menor a mayor y revierte el orden original.",
+      "tip": "Si hay grados, conserva la dirección de la escala.",
+      "relation": "Emoción intensa → emoción básica"
+    },
+    {
+      "id": "b19",
+      "level": 2,
+      "type": "vocabulario",
+      "prompt": "«El informe debía ser sucinto: dos párrafos bastaban para exponer lo esencial». Sucinto significa…",
+      "options": [
+        "ambiguo",
+        "superficial",
+        "incompleto",
+        "conciso"
+      ],
+      "answer": 3,
+      "explanation": "Sucinto significa breve y preciso. Un texto conciso puede recoger lo esencial sin ser superficial ni incompleto.",
+      "tip": "No atribuyas un defecto a una palabra que solo describe brevedad."
+    },
+    {
+      "id": "b20",
+      "level": 2,
+      "type": "vocabulario",
+      "prompt": "«Se mostró reticente a aceptar el cambio: puso reparos y pidió más tiempo». Reticente significa…",
+      "options": [
+        "poco dispuesto",
+        "desinformado",
+        "entusiasmado",
+        "incapaz"
+      ],
+      "answer": 0,
+      "explanation": "Los reparos y la demora muestran poca disposición a aceptar. No prueban incapacidad: podría hacerlo y aun así tener reservas.",
+      "tip": "Distingue actitud, capacidad y conocimiento."
+    },
+    {
+      "id": "b21",
+      "level": 2,
+      "type": "cohesion",
+      "prompt": "Completa con una concesión: «___ el trayecto era más largo, eligieron esa ruta por ser más segura».",
+      "options": [
+        "A medida que",
+        "Puesto que",
+        "Aunque",
+        "Para que"
+      ],
+      "answer": 2,
+      "explanation": "Aunque introduce una dificultad que no impide la elección. Puesto que presentaría la mayor longitud como causa, cuando la razón indicada es la seguridad.",
+      "tip": "La concesión admite un obstáculo y mantiene la afirmación principal."
+    },
+    {
+      "id": "b22",
+      "level": 2,
+      "type": "cohesion",
+      "prompt": "«El equipo redujo el consumo de agua sin disminuir la producción. Ese resultado permitió mantener el mismo volumen con menos recursos». ¿Qué retoma «ese resultado»?",
+      "options": [
+        "El volumen de agua disponible antes del cambio.",
+        "La reducción del consumo sin bajar la producción.",
+        "La contratación de más trabajadores.",
+        "Una disminución de la producción."
+      ],
+      "answer": 1,
+      "explanation": "Ese resultado resume el hecho completo anterior: usar menos agua manteniendo la producción. No se refiere únicamente a una palabra ni a un cambio de personal.",
+      "tip": "Un demostrativo puede retomar toda una idea."
+    },
+    {
+      "id": "b23",
+      "level": 2,
+      "type": "inferencia",
+      "prompt": "Solo se exhiben piezas que han superado la inspección. La pieza X está en exhibición. ¿Qué se deduce?",
+      "options": [
+        "La pieza X fue la mejor evaluada.",
+        "Toda pieza inspeccionada está en exhibición.",
+        "La pieza X superó la inspección.",
+        "No existen piezas aprobadas fuera de exhibición."
+      ],
+      "answer": 2,
+      "explanation": "Exhibirse exige haber superado la inspección; por eso X la superó. La regla no obliga a exhibir todas las piezas aprobadas.",
+      "tip": "«Solo» puede introducir una condición necesaria, no una garantía de selección."
+    },
+    {
+      "id": "b24",
+      "level": 2,
+      "type": "inferencia",
+      "prompt": "Marta puede asistir el martes o el jueves. El jueves tiene un compromiso que le impide asistir. Según estos datos, ¿qué día le queda disponible?",
+      "options": [
+        "El martes.",
+        "Ambos días.",
+        "Ninguno de los dos.",
+        "El jueves."
+      ],
+      "answer": 0,
+      "explanation": "El texto ofrece dos días posibles y descarta el jueves. Queda el martes; no hay información que lo descarte.",
+      "tip": "Elimina únicamente las alternativas que los datos excluyen."
+    },
+    {
+      "id": "b25",
+      "level": 3,
+      "type": "analogia",
+      "prompt": "Refutar es a afirmación como…",
+      "options": [
+        "difundir es a opinión",
+        "rebatir es a argumento",
+        "examinar es a hipótesis",
+        "sustentar es a tesis"
+      ],
+      "answer": 1,
+      "explanation": "Refutar una afirmación y rebatir un argumento consisten en impugnar su validez mediante razones. Examinar una hipótesis solo implica estudiarla: el examen podría confirmarla.",
+      "tip": "Distingue el análisis neutral de la acción dirigida a rechazar una idea.",
+      "relation": "Cuestionamiento razonado → idea impugnada"
+    },
+    {
+      "id": "b26",
+      "level": 3,
+      "type": "analogia",
+      "prompt": "Diluir es a concentración como…",
+      "options": [
+        "intensificar es a brillo",
+        "examinar es a densidad",
+        "calibrar es a precisión",
+        "abreviar es a duración"
+      ],
+      "answer": 3,
+      "explanation": "Diluir reduce la concentración; abreviar reduce la duración. Examinar la densidad permite analizarla, pero no implica disminuirla. Calibrar busca ajustar un instrumento, no reducir su precisión.",
+      "tip": "Sustituye el verbo por «reducir» y verifica la propiedad exacta.",
+      "relation": "Acción reductora → propiedad que disminuye"
+    },
+    {
+      "id": "b27",
+      "level": 3,
+      "type": "analogia",
+      "prompt": "Indicio es a prueba concluyente como…",
+      "options": [
+        "convicción es a duda",
+        "sospecha es a certeza",
+        "hipótesis es a conjetura",
+        "evidencia es a señal"
+      ],
+      "answer": 1,
+      "explanation": "Un indicio orienta, pero por sí solo no equivale a una prueba concluyente; una sospecha tampoco equivale a una certeza. Hipótesis y conjetura se mantienen en un grado tentativo similar.",
+      "tip": "Busca el salto desde lo tentativo hacia lo establecido.",
+      "relation": "Apoyo o creencia tentativa → establecimiento concluyente"
+    },
+    {
+      "id": "b28",
+      "level": 3,
+      "type": "analogia",
+      "prompt": "Cimiento es a edificio como…",
+      "options": [
+        "conclusión es a razonamiento",
+        "título es a capítulo",
+        "premisa es a razonamiento",
+        "ejemplo es a definición"
+      ],
+      "answer": 2,
+      "explanation": "El cimiento sirve de base al edificio; una premisa sirve de base al razonamiento. La conclusión es el resultado del razonamiento, no el punto de partida que lo sostiene.",
+      "tip": "Prueba la relación abstracta «sirve de base a».",
+      "relation": "Fundamento → estructura sustentada"
+    },
+    {
+      "id": "b29",
+      "level": 3,
+      "type": "analogia",
+      "prompt": "Confluencia es a cauces como…",
+      "options": [
+        "fusión es a entidades",
+        "coexistencia es a grupos",
+        "clasificación es a categorías",
+        "bifurcación es a caminos"
+      ],
+      "answer": 0,
+      "explanation": "La confluencia reúne cauces; una fusión reúne entidades en una sola. La coexistencia permite que varios grupos estén presentes, pero no exige que se integren.",
+      "tip": "Distingue unirse de estar juntos sin integrarse.",
+      "relation": "Proceso de unión → elementos que se integran"
+    },
+    {
+      "id": "b30",
+      "level": 3,
+      "type": "analogia",
+      "prompt": "Impermeabilizar es a filtración como…",
+      "options": [
+        "reparar es a avería",
+        "describir es a deterioro",
+        "diagnosticar es a enfermedad",
+        "inmunizar es a infección"
+      ],
+      "answer": 3,
+      "explanation": "Impermeabilizar busca evitar una filtración; inmunizar busca evitar una infección. Reparar una avería corrige un daño existente: es una acción correctiva, no preventiva.",
+      "tip": "Distingue prevenir, detectar y remediar un problema.",
+      "relation": "Acción protectora → problema que busca prevenir"
+    },
+    {
+      "id": "b31",
+      "level": 3,
+      "type": "vocabulario",
+      "prompt": "«El coordinador fue expeditivo: resolvió el trámite con rapidez y sin rodeos». Expeditivo significa…",
+      "options": [
+        "ágil y resolutivo",
+        "autoritario e inflexible",
+        "precipitado e imprudente",
+        "minucioso y lento"
+      ],
+      "answer": 0,
+      "explanation": "Expeditivo alude a actuar con eficacia y prontitud. El texto no atribuye imprudencia: resolver rápido no equivale a resolver mal.",
+      "tip": "Evita añadir juicios negativos que el contexto no sostiene."
+    },
+    {
+      "id": "b32",
+      "level": 3,
+      "type": "vocabulario",
+      "prompt": "«Ante la pregunta sobre el presupuesto, soslayó el asunto y habló de otro tema». Soslayó significa…",
+      "options": [
+        "aclaró",
+        "eludió",
+        "refutó",
+        "pospuso formalmente"
+      ],
+      "answer": 1,
+      "explanation": "Cambiar de tema para no tratar el asunto es eludirlo. Refutarlo exigiría argumentos en contra; posponerlo formalmente exigiría anunciar que se tratará después.",
+      "tip": "Busca la acción realmente descrita, sin inventar una intención adicional."
+    },
+    {
+      "id": "b33",
+      "level": 3,
+      "type": "cohesion",
+      "prompt": "«La propuesta era viable; ___, se descartó, ___ su costo superaba el presupuesto». Elige los conectores que expresan contraste y luego causa.",
+      "options": [
+        "sin embargo / porque",
+        "por lo tanto / aunque",
+        "además / mientras",
+        "es decir / por eso"
+      ],
+      "answer": 0,
+      "explanation": "Sin embargo contrasta la viabilidad con el rechazo; porque presenta el costo como causa. Por lo tanto haría del rechazo una consecuencia de la viabilidad, contrario a la relación solicitada.",
+      "tip": "Resuelve cada vínculo por separado y después lee el conjunto."
+    },
+    {
+      "id": "b34",
+      "level": 3,
+      "type": "cohesion",
+      "prompt": "Ordena: I. Esa comparación reveló menos errores. II. Primero se probó el método nuevo. III. Luego se compararon sus resultados con los del método anterior. IV. Por ese motivo, se decidió adoptarlo.",
+      "options": [
+        "II → I → III → IV",
+        "II → III → IV → I",
+        "II → III → I → IV",
+        "III → II → IV → I"
+      ],
+      "answer": 2,
+      "explanation": "Primero se prueba; luego se comparan los resultados. Esa comparación de I retoma III, y ese motivo de IV retoma la reducción de errores de I. Adelantar IV deja sin presentar la razón de la adopción.",
+      "tip": "Sigue los antecedentes de «esa» y «ese», además de los marcadores temporales."
+    },
+    {
+      "id": "b35",
+      "level": 3,
+      "type": "inferencia",
+      "prompt": "Ningún informe sin fuentes se aprueba. Algunos informes con fuentes se rechazan. ¿Cuál es la conclusión más precisa?",
+      "options": [
+        "Ningún informe puede ser aprobado.",
+        "Tener fuentes garantiza la aprobación.",
+        "Tener fuentes es necesario, pero no garantiza la aprobación.",
+        "Todo informe rechazado carece de fuentes."
+      ],
+      "answer": 2,
+      "explanation": "La primera oración exige fuentes para aprobar; la segunda muestra que las fuentes no bastan. No se puede invertir la regla y atribuir toda desaprobación a la falta de fuentes.",
+      "tip": "Separa una condición necesaria de una condición suficiente."
+    },
+    {
+      "id": "b36",
+      "level": 3,
+      "type": "inferencia",
+      "prompt": "La biblioteca abrió una sala nocturna. Ese mes aumentaron las visitas, pero también hubo exámenes y se amplió la colección. ¿Qué conclusión respeta la evidencia?",
+      "options": [
+        "La nueva colección fue la única causa.",
+        "No se puede atribuir el aumento exclusivamente al horario nocturno.",
+        "Los exámenes no influyeron en las visitas.",
+        "El horario nocturno causó todo el aumento."
+      ],
+      "answer": 1,
+      "explanation": "Coinciden varios cambios y no se aísla su efecto. El horario pudo contribuir, pero estos datos no permiten asignarle todo el aumento ni excluir las otras explicaciones.",
+      "tip": "La coincidencia temporal no demuestra una causa exclusiva."
+    }
+  ]
+}
